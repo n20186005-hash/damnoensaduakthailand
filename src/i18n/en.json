@@ -231,6 +231,113 @@
     "disclaimerLead": "This site is a public-interest informational guide and is not an official outlet. We welcome your updates and corrections by email.",
     "unofficial": "Unofficial independent non-profit / UNOFFICIAL INDEPENDENT NON-PROFIT: This website is an independent non-profit visitor-information project. We are not affiliated with any government agency or official organization.",
     "dataSource": "Data source · Data Source: The attraction information cited here is verified against public materials from the Tourism Authority of Thailand and the Chiang Mai municipality, with no commercial endorsements.",
-    "copyright": "© 2026 Damnoen Saduak Floating Market — a non-profit educational travel guide"
+    "copyright": "© 2026 Damnoen Saduak Floating Market — a non-profit educational travel guide",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Settings"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "updated": "Last updated: July 2026",
+      "sections": [
+        {
+          "h": "Information we collect",
+          "p": "We collect only the minimum data necessary to provide our service. This may include:",
+          "list": [
+            "Browsing data (IP address, browser type, pages visited)",
+            "Cookies and similar technologies",
+            "Any information you voluntarily provide via our contact form or email"
+          ]
+        },
+        {
+          "h": "How we use your information",
+          "p": "We use the information we collect to:",
+          "list": [
+            "Improve our content and your experience",
+            "Analyse traffic and usage patterns",
+            "Respond to your requests",
+            "Comply with our legal obligations"
+          ]
+        },
+        {
+          "h": "Third-party services",
+          "p": "Our website may use third-party services such as Google Maps (for embedded maps and location data), Google Analytics (for traffic analysis) and Unsplash (for images). These services have their own privacy policies."
+        },
+        {
+          "h": "Your rights",
+          "p": "Under the General Data Protection Regulation (GDPR) and related laws, you have the following rights:",
+          "list": [
+            "Access your personal data",
+            "Request correction or deletion",
+            "Object to processing (restrict or refuse our use of your data)",
+            "Lodge a complaint with a supervisory authority"
+          ]
+        }
+      ]
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "updated": "Last updated: July 2026",
+      "sections": [
+        {
+          "h": "Access and use",
+          "p": "By accessing and using this website, you agree to be bound by these Terms of Service."
+        },
+        {
+          "h": "Use of content",
+          "p": "All content on this website is provided for informational purposes only. We are an independent third-party travel-information website and are not affiliated with any attraction, government agency, or commercial operator."
+        },
+        {
+          "h": "Accuracy of information",
+          "p": "We strive to provide accurate and up-to-date information, but cannot guarantee its completeness or accuracy. Itineraries, conditions and services may change without notice. Always verify important details through official channels before you travel."
+        },
+        {
+          "h": "Intellectual property",
+          "p": "The design and original content of this website are protected by copyright. Images are from Unsplash and used under their licence. Google Maps data is used in accordance with Google's Terms of Service."
+        },
+        {
+          "h": "Limitation of liability",
+          "p": "This website is provided 'as is' without any warranties. We are not responsible for any loss arising from the use of the information on this site, including travel decisions based on its content."
+        }
+      ]
+    },
+    "cookies": {
+      "title": "Cookie Settings",
+      "updated": "Last updated: July 2026",
+      "intro": "We use cookies to improve your browsing experience. You can manage your preferences below.",
+      "categories": [
+        {
+          "h": "Necessary cookies",
+          "p": "These cookies are essential for the website to function and cannot be disabled.",
+          "status": "Always active",
+          "active": true
+        },
+        {
+          "h": "Analytics cookies",
+          "p": "They help us understand how visitors interact with our website by collecting anonymous usage data.",
+          "sub": "Google Analytics",
+          "subStatus": "Active",
+          "active": true
+        },
+        {
+          "h": "Preference cookies",
+          "p": "They remember your settings, such as language and theme preferences.",
+          "sub": "User preferences",
+          "subStatus": "Active",
+          "active": true
+        },
+        {
+          "h": "Marketing cookies",
+          "p": "They are used to show relevant ads and measure the effectiveness of ad campaigns.",
+          "sub": "Personalised ads",
+          "subStatus": "Disabled",
+          "active": false
+        }
+      ],
+      "consent": "You can change your cookie settings at any time. Please note that disabling certain cookies may affect the functionality of the website.",
+      "save": "Save preferences",
+      "rejectAll": "Reject all"
+    }
   }
 }
