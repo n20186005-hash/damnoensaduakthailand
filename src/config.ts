@@ -50,4 +50,32 @@ export const siteConfig = {
   sameAs: [
     'https://maps.app.goo.gl/DAR94g91aeJne7Y96',
   ],
+
+  // authoritative reference sources (E-E-A-T)
+  sources: [
+    {
+      name: {
+        th: 'การท่องเที่ยวแห่งประเทศไทย (ททท.) — ตลาดน้ำดำเนินสะดวก',
+        en: 'Tourism Authority of Thailand — Damnoen Saduak Floating Market',
+        zh: '泰国国家旅游局（TAT）— 丹嫩沙多水上市场',
+      },
+      url: 'https://www.tourismthailand.org/Attraction/damnoen-saduak-floating-market',
+    },
+    {
+      name: {
+        th: 'Google Maps — ตำแหน่งที่ได้รับการยืนยัน',
+        en: 'Google Maps — Verified location',
+        zh: 'Google Maps — 已核实位置',
+      },
+      url: 'https://maps.app.goo.gl/DAR94g91aeJne7Y96',
+    },
+    {
+      name: {
+        th: 'วิกิพีเดีย — ตลาดน้ำดำเนินสะดวก',
+        en: 'Wikipedia — Damnoen Saduak Floating Market',
+        zh: '维基百科 — 丹嫩沙多水上市场',
+      },
+      url: 'https://en.wikipedia.org/wiki/Damnoen_Saduak_Floating_Market',
+    },
+  ],
 } as const;
