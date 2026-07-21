@@ -13,9 +13,10 @@ const doc = (messages.legal as any)[type];
 ---
 <BaseLayout lang={lang} title={doc.title} description={doc.title}>
   <Header lang={lang} messages={messages} />
-  <main class="mx-auto max-w-3xl px-5 py-14 text-ivory/85 leading-relaxed">
-    <h1 class="font-display text-3xl md:text-4xl text-gold mb-2">{doc.title}</h1>
-    <p class="text-sm text-ivory/50 mb-8">{doc.updated}</p>
+  <div class="bg-teakDeep min-h-screen pt-24 pb-12">
+    <main class="mx-auto max-w-3xl px-5 text-ivory/85 leading-relaxed">
+      <h1 class="font-display text-3xl md:text-4xl text-gold mb-2">{doc.title}</h1>
+      <p class="text-sm text-ivory/50 mb-8">{doc.updated}</p>
 
     {type !== 'cookies' && doc.sections.map((s: any) => (
       <section class="mb-8">
@@ -56,6 +57,7 @@ const doc = (messages.legal as any)[type];
         </div>
       </>
     )}
-  </main>
+    </main>
+  </div>
   <Footer lang={lang} messages={messages} />
 </BaseLayout>
