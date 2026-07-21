@@ -3,7 +3,9 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://damnoensaduakthailand.com',
+  site: process.env.CURRENT_SITE_DOMAIN 
+    ? `https://${process.env.CURRENT_SITE_DOMAIN}` 
+    : 'https://damnoensaduakthailand.com',
   output: 'static',
   i18n: {
     defaultLocale: 'th',
