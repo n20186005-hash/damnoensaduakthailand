@@ -1,0 +1,231 @@
+{
+  "meta": {
+    "title": "Damnoen Saduak Floating Market — The Complete Visitor Guide",
+    "description": "Damnoen Saduak Floating Market, Ratchaburi — your complete guide: history, riverside food, visitor tips and real reviews. Experience the authentic waterway life of Siam."
+  },
+  "common": {
+    "siteName": "Damnoen Saduak Floating Market",
+    "changeLanguage": "Change language",
+    "toggleTheme": "Toggle theme",
+    "viewOnMaps": "View on Google Maps"
+  },
+  "header": {
+    "home": "Home",
+    "about": "About",
+    "history": "History",
+    "guide": "Guide",
+    "food": "Food",
+    "gallery": "Gallery",
+    "reviews": "Reviews",
+    "map": "Map"
+  },
+  "hero": {
+    "eyebrow": "— 01 · The Waterway Legend of Ratchaburi —",
+    "titleMain": "Damnoen Saduak Floating Market",
+    "titleAccent": "Floating",
+    "subtitle": "The most vibrant floating market of Siam — wooden paddle boats laden with fruit and local food ply a historic canal first dug in the reign of King Rama IV",
+    "cta1": "Start the journey",
+    "cta2": "Taste the waterway →",
+    "rating": "3.8",
+    "reviewCount": "34,449",
+    "liveWeather": "Live weather",
+    "liveSunset": "Sunset",
+    "loading": "Loading live data from the actual location…",
+    "weatherError": "Live weather data is unavailable right now",
+    "plannerEyebrow": "— The Light of the Day —",
+    "plannerTitle": "Sunset & Blue Hour",
+    "plannerNote": "Calculated from the market's real coordinates so you can plan photography and visits precisely",
+    "arriveLabel": "Suggested arrival time",
+    "blueHourLabel": "Blue Hour",
+    "lightCaption": "Soft light, perfect for photography",
+    "viewLocation": "View on Google Maps ↗"
+  },
+  "about": {
+    "label": "— 02 · About the Market —",
+    "heading": "About Damnoen Saduak Floating Market",
+    "lead": "Thailand's most iconic and historic floating market, set along the Damnoen Saduak Canal in Ratchaburi Province",
+    "paragraph1": "Damnoen Saduak Floating Market was established in the reign of King Rama IV to connect the waterway between Bangkok and southern Thailand. The Damnoen Saduak Canal, over 32 km long, became a historic trade route where villagers have exchanged goods since ancient times.",
+    "paragraph2": "Every early morning, brightly painted paddle boats line up selling pomelo, bananas, young coconut and home-cooked food, letting visitors experience the authentic riverside life of old Siam that still survives today.",
+    "quote": "A floating market is not just a place to trade — it is a way of life that floats upon the water",
+    "quoteAuthor": "— Aunt Chuen, third-generation boat vendor",
+    "stats": [
+      { "value": "32 km", "label": "Length of Damnoen Saduak Canal" },
+      { "value": "200+ yrs", "label": "Age of this riverside market" },
+      { "value": "07:00–17:00", "label": "Opening hours" }
+    ],
+    "highlights": [
+      { "tag": "01", "title": "Paddle boats", "desc": "Wooden canoes and long-tail boats brimming with colourful goods" },
+      { "tag": "02", "title": "Riverside food", "desc": "Boat noodles, Thai sweets and fresh garden fruit" },
+      { "tag": "03", "title": "Culture", "desc": "A riverside community life passed down for generations" }
+    ],
+    "editorTip": {
+      "tag": "Editor's tip",
+      "text": "Arrive at dawn (07:00–09:00) for the softest light and the liveliest atmosphere",
+      "ctaLabel": "See the guide"
+    }
+  },
+  "history": {
+    "label": "— 03 · History & Legend —",
+    "heading": "The History & Legend of the Waterway",
+    "intro": "The story of Damnoen Saduak begins with the historic canal that linked the western towns of Siam together",
+    "blocks": [
+      {
+        "title": "The Damnoen Saduak Canal (Rama IV)",
+        "text": "During the reign of King Mongkut (Rama IV), a canal was commissioned to shortcut between the Mae Klong and Tha Chin rivers, cutting the waterway from 14 leagues down to just 32 km. Villagers soon adopted the canal as their main trading route."
+      },
+      {
+        "title": "The golden age of the floating market",
+        "text": "After the canal opened, the riverside community flourished. Paddle boats plied their trade energetically, and Damnoen Saduak became the commercial and transport hub of Ratchaburi and the surrounding provinces."
+      },
+      {
+        "title": "From a way of life to local heritage",
+        "text": "Even as land transport took over, the market preserved its riverside way of life. Today it stands as one of Thailand's most important tourism symbols and is registered as a local intangible heritage."
+      }
+    ],
+    "legend": {
+      "title": "The legend of the paddle boats",
+      "text": "Locals tell that the paddle boats which set out at dawn pass good fortune from one generation to the next — whoever tastes the first pomelo sold from a boat at the start of the day will meet prosperity all year long."
+    },
+    "didYouKnow": {
+      "title": "Did you know?",
+      "text": "The Damnoen Saduak Canal took two full years (1866–1868) to dig, using only manual labour with no modern machinery"
+    }
+  },
+  "guide": {
+    "label": "— 04 · Visitor Guide —",
+    "heading": "Damnoen Saduak Visitor Guide",
+    "lead": "Everything you need to know before you set off, so your visit is smooth and worthwhile",
+    "hours": {
+      "tag": "01",
+      "title": "Opening hours",
+      "time": "Daily 07:00 – 17:00",
+      "items": [
+        { "label": "Most lively period", "value": "07:00 – 09:00" },
+        { "label": "Boat rentals", "value": "08:00 – 16:00" }
+      ]
+    },
+    "fees": {
+      "tag": "02",
+      "title": "Estimated costs",
+      "items": [
+        { "title": "Market entry", "desc": "Free — no gate fee" },
+        { "title": "Long-tail boat tour", "desc": "Approx. 300–600 THB / boat (per round)" },
+        { "title": "Paddle / kayak rental", "desc": "Approx. 150–300 THB / hour" },
+        { "title": "Food & fruit", "desc": "From 20–50 THB" }
+      ]
+    },
+    "transport": {
+      "tag": "03",
+      "title": "Getting there",
+      "items": [
+        { "title": "Private car", "desc": "From Bangkok take Highway 9 then 340, ~100 km, about 1.5 hrs" },
+        { "title": "Van / songthaew", "desc": "Van from Bangkok Southern Bus Terminal to Ratchaburi, then a songthaew to the market" },
+        { "title": "Day tour", "desc": "Bangkok day-trip packages including transfer and a canal boat tour" }
+      ]
+    },
+    "faqTitle": "Frequently asked questions",
+    "faqs": [
+      { "q": "Which day is best to visit?", "a": "Weekdays are quieter than weekends, and pre-dawn gives the most authentic atmosphere." },
+      { "q": "Do I need to book a boat in advance?", "a": "Mostly you can rent at the pier on the spot, but during festivals booking via your hotel or a tour is recommended." },
+      { "q": "Is vegetarian or vegan food available?", "a": "Yes — many Thai-dessert and fruit boats, and some boats offer vegetarian options." },
+      { "q": "Can I get there by public transport?", "a": "Yes — van from Bangkok to Ratchaburi then a songthaew, or join a day tour." }
+    ]
+  },
+  "food": {
+    "label": "— 05 · Flavours of the Waterway —",
+    "heading": "Flavours of the Waterway",
+    "lead": "Floating kitchens that serve you right at your boat — a charm you won't find anywhere else",
+    "dishes": [
+      { "tag": "01", "name": "Boat noodles", "desc": "Pork boat noodles with coconut milk and tamarind, rich and deep", "price": "from 40 THB" },
+      { "tag": "02", "name": "Kanom krok", "desc": "Coconut-rice pancakes, crisp edges, soft centre, fragrant with coconut", "price": "from 20 THB" },
+      { "tag": "03", "name": "Damnoen Saduak pomelo", "desc": "Local pomelo, juicy and sweet with a balanced flavour", "price": "from 50 THB" },
+      { "tag": "04", "name": "Boat coffee", "desc": "Old-style coffee brewed from a paddle boat, served ice-cold", "price": "from 30 THB" }
+    ],
+    "quote": {
+      "text": "The true taste of Damnoen Saduak is a flavour served from boat to boat",
+      "author": "— Local chef"
+    }
+  },
+  "gallery": {
+    "label": "— 06 · Photo Gallery —",
+    "heading": "Scenes of the Floating Market",
+    "intro": "A collection of paddle boats, riverside food and the life that floats upon the Damnoen Saduak Canal",
+    "viewLocation": "View location on Google Maps ↗",
+    "credits": "Photos are shared under Creative Commons licenses for non-profit educational use.",
+    "alts": [
+      "Paddle boat selling fruit along the Damnoen Saduak Canal",
+      "The floating market in the early morning",
+      "Long-tail boat touring the canal",
+      "Fresh local pomelo from the orchard",
+      "Boat noodles served from a paddle boat",
+      "Fragrant coconut kanom krok",
+      "Villagers trading goods on a boat",
+      "Tourist paddling a kayak",
+      "Scenery of the historic canal",
+      "Colourful floating shops",
+      "Fresh young coconut from the garden",
+      "The lively atmosphere of the market",
+      "First light of dawn on the canal"
+    ]
+  },
+  "reviews": {
+    "label": "— 07 · Visitor Reviews —",
+    "heading": "Voices of Our Visitors",
+    "intro": "A collection of opinions from travellers around the world who visited Damnoen Saduak Floating Market",
+    "declaration": "All reviews are genuine user opinions with no sponsorship",
+    "featured": [
+      { "text": "Going at dawn like a local is the best thing to do — the brightly coloured boats and familiar vendor calls are unforgettable", "source": "— TripAdvisor" },
+      { "text": "A cultural experience you can't get in big cities, perfect for photos and learning a way of life", "source": "— Google Reviews" }
+    ],
+    "items": [
+      { "name": "Somchai T.", "date": "Mar 2026", "rating": "4.5", "text": "The most lively floating market I've been to; the boat food is amazing, especially the boat noodles." },
+      { "name": "Anna K.", "date": "Feb 2026", "rating": "4.0", "text": "Lovely atmosphere, but very crowded on holidays — go early." },
+      { "name": "Wichai P.", "date": "Jan 2026", "rating": "5.0", "text": "I come every year and never get bored; a riverside life you can rarely repeat." },
+      { "name": "Liu Mei", "date": "Dec 2025", "rating": "3.5", "text": "Very beautiful, though a bit pricier than ordinary markets." },
+      { "name": "John D.", "date": "Nov 2025", "rating": "4.0", "text": "Great cultural experience, boat noodles were excellent." },
+      { "name": "Pimchanok S.", "date": "Oct 2025", "rating": "4.5", "text": "The long-tail boat tour is worth it; you see the orchard growers' way of life." },
+      { "name": "Tanaka H.", "date": "Sep 2025", "rating": "3.0", "text": "Crowded and fairly tourist-zoned, but still worth the trip." },
+      { "name": "Niran R.", "date": "Aug 2025", "rating": "4.0", "text": "The pomelo is absolutely delicious; I buy some to take home every time." }
+    ],
+    "viewLocation": "View location on Google Maps ↗",
+    "disclaimer": "Overall rating 3.8 from 34,449 reviewers on Google Maps"
+  },
+  "mapSection": {
+    "label": "— 08 · Location & Getting There —",
+    "heading": "Location & Getting There",
+    "lead": "Damnoen Saduak Floating Market sits in Damnoen Saduak District, Ratchaburi Province, about 100 km from Bangkok",
+    "address": "Damnoen Saduak, Damnoen Saduak District, Ratchaburi 70130, Thailand",
+    "phone": "+66 85 222 7470",
+    "plusCode": "GXC5+3C · Damnoen Saduak",
+    "coords": "13.51°N · 99.95°E",
+    "viewLocation": "Open in Google Maps ↗",
+    "stats": [
+      { "tag": "Coordinates", "value": "13.51°N 99.95°E", "sub": "Damnoen Saduak, Ratchaburi" },
+      { "tag": "Distance", "value": "~100 km", "sub": "from Bangkok" },
+      { "tag": "Plus Code", "value": "GXC5+3C", "sub": "Damnoen Saduak" }
+    ]
+  },
+  "footer": {
+    "brand": {
+      "name": "Damnoen Saduak Floating Market",
+      "tagline": "The waterway legend of Ratchaburi"
+    },
+    "about": "A non-profit, educational travel-information website dedicated to accurate, complete and respectful presentation of local ways of life.",
+    "navTitle": "Menu",
+    "navItems": [
+      { "label": "Home", "href": "#home" },
+      { "label": "About", "href": "#about" },
+      { "label": "History", "href": "#history" },
+      { "label": "Guide", "href": "#guide" },
+      { "label": "Food", "href": "#food" },
+      { "label": "Gallery", "href": "#gallery" },
+      { "label": "Reviews", "href": "#reviews" },
+      { "label": "Map", "href": "#map" }
+    ],
+    "noteTitle": "Note",
+    "note": "Information may change; please verify the latest hours and fees before you travel.",
+    "mapsLabel": "Google Maps →",
+    "orgLine": "A non-profit educational travel guide",
+    "copyright": "© 2026 Damnoen Saduak Floating Market — a non-profit educational travel guide"
+  }
+}
