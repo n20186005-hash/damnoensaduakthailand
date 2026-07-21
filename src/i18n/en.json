@@ -35,6 +35,9 @@
     "plannerEyebrow": "— The Light of the Day —",
     "plannerTitle": "Sunset & Blue Hour",
     "plannerNote": "Calculated from the market's real coordinates so you can plan photography and visits precisely",
+    "goldenHourLabel": "Golden hour",
+    "crowdWarningLabel": "Crowd peak warning",
+    "crowdAfter": "After 09:30",
     "arriveLabel": "Suggested arrival time",
     "blueHourLabel": "Blue Hour",
     "lightCaption": "Soft light, perfect for photography",
@@ -95,6 +98,10 @@
     "label": "— 04 · Visitor Guide —",
     "heading": "Damnoen Saduak Visitor Guide",
     "lead": "Everything you need to know before you set off, so your visit is smooth and worthwhile",
+    "scamTip": {
+      "tag": "⚠️ Avoid scams (official pier guide)",
+      "text": "Decline the inflated prices at private roadside piers (Passerby Piers). Navigate directly to 'Damnoen Saduak Floating Market Main Pier' (inside the core market). The official paddle-boat reference price is 150–300 THB per person per hour; hand-rowed boats or fairly priced long-tail boats are more transparent."
+    },
     "hours": {
       "tag": "01",
       "title": "Opening hours",
@@ -151,6 +158,7 @@
     "label": "— 06 · Photo Gallery —",
     "heading": "Scenes of the Floating Market",
     "intro": "A collection of paddle boats, riverside food and the life that floats upon the Damnoen Saduak Canal",
+    "historicalNote": "Then and now: compared with the 1970s, Damnoen Saduak today has more modern facilities, yet the lively waterside trading spirit and traditional way of life remain as vivid as ever.",
     "viewLocation": "View location on Google Maps ↗",
     "credits": "Photos are shared under Creative Commons licenses for non-profit educational use.",
     "alts": [
