@@ -72,9 +72,8 @@ const coordsLabel = siteConfig.coords.label[lang];
             <p class="font-hand text-gold text-lg">{hero.plannerTitle}</p>
             <p class="text-xs text-ivory/60 mt-0.5">{hero.plannerNote}</p>
             <div class="mt-3 space-y-2 text-sm">
-              <div class="flex justify-between"><span class="text-ivory/70">{hero.liveSunset}</span><span id="sun-time" class="font-semibold text-ivory">--:--</span></div>
-              <div class="flex justify-between"><span class="text-ivory/70">{hero.blueHourLabel}</span><span id="blue-time" class="font-semibold text-goldBright">--:--</span></div>
-              <div class="flex justify-between"><span class="text-ivory/70">{hero.arriveLabel}</span><span id="arrive-time" class="font-semibold text-ivory">--:--</span></div>
+              <div class="flex justify-between"><span class="text-ivory/70">{hero.goldenHourLabel}</span><span class="font-semibold text-goldBright">07:00 – 08:30</span></div>
+              <div class="flex justify-between"><span class="text-ivory/70">{hero.crowdWarningLabel}</span><span class="font-semibold text-ivory">09:30 以后</span></div>
             </div>
             <p class="text-[11px] text-ivory/50 mt-2">{hero.lightCaption}</p>
           </div>
@@ -145,13 +144,6 @@ const coordsLabel = siteConfig.coords.label[lang];
         document.getElementById('cur-cond').textContent = weatherText(d.current.weather_code, 'title');
         document.getElementById('cur-wind').textContent = Math.round(d.current.wind_speed_10m) + ' km/h';
         document.getElementById('cur-icon').textContent = iconFor(d.current.weather_code);
-
-        const sun = new Date(d.daily.sunset[0]);
-        const blue = new Date(sun.getTime() + 20 * 60000);
-        const arrive = new Date(sun.getTime() - 60 * 60000);
-        document.getElementById('sun-time').textContent = fmtDate(sun);
-        document.getElementById('blue-time').textContent = fmtDate(blue);
-        document.getElementById('arrive-time').textContent = fmtDate(arrive);
 
         statusEl.classList.add('hidden');
         bodyEl.classList.remove('hidden');
