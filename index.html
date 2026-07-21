@@ -1,0 +1,610 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ตลาดน้ำดำเนินสะดวก · Damnoen Saduak Floating Market</title>
+<meta name="description" content="คู่มือฉบับสมบูรณ์สู่ตลาดน้ำดำเนินสะดวก ราชบุรี — ตำนานสายน้ำ อาหารพื้นบ้าน และวิถีชีวิตริมคลองอันตราตรึงใจ" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Trirong:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Sarabun:wght@300;400;600&family=Charm:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          display: ['Trirong','serif'],
+          body: ['Sarabun','sans-serif'],
+          hand: ['Charm','cursive'],
+        },
+        colors: {
+          teak: '#0d2a2e',
+          teakDeep: '#071a1c',
+          gold: '#c9a962',
+          goldBright: '#e6c675',
+          ivory: '#f5ecd7',
+          ivoryDim: '#ebdfc4',
+          burgundy: '#6b1e1e',
+          ink: '#1c1410',
+        },
+      }
+    }
+  }
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f5ecd7;
+    color: #1c1410;
+    font-family: 'Sarabun', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Grain overlay */
+  .grain::before{
+    content:""; position:absolute; inset:0; pointer-events:none;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    opacity:.35; mix-blend-mode:multiply;
+  }
+  .gold-text{
+    background: linear-gradient(180deg,#e6c675 0%,#c9a962 45%,#8a6a2b 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .rule-gold{
+    background: linear-gradient(90deg,transparent,#c9a962 30%,#e6c675 50%,#c9a962 70%,transparent);
+    height:1px;
+  }
+  /* Thai kranok-inspired ornament using SVG */
+  .ornament svg{filter: drop-shadow(0 0 6px rgba(201,169,98,.35));}
+  .hero-title{
+    letter-spacing: -0.01em;
+    line-height:.95;
+  }
+  .vwriting{
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    letter-spacing: .35em;
+  }
+  .frame-gold{
+    border:1px solid rgba(201,169,98,.55);
+    box-shadow: inset 0 0 0 3px rgba(13,42,46,.9), inset 0 0 0 4px rgba(201,169,98,.35);
+  }
+  .card-paper{
+    background:
+      radial-gradient(120% 90% at 0% 0%, rgba(255,255,255,.6), transparent 60%),
+      linear-gradient(180deg,#f7efd8, #efe1bf);
+    border:1px solid rgba(107,30,30,.15);
+  }
+  .tag{
+    font-family:'Trirong',serif; font-style:italic; letter-spacing:.05em;
+  }
+  .num-thai{ font-variant-numeric: normal; }
+  @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .float-slow{ animation: floatY 6s ease-in-out infinite; }
+  .fade-up{ opacity:0; transform:translateY(24px); animation: fu .9s ease-out forwards; }
+  @keyframes fu { to{opacity:1; transform:none} }
+  .delay-1{ animation-delay:.15s } .delay-2{ animation-delay:.3s } .delay-3{ animation-delay:.45s } .delay-4{ animation-delay:.6s }
+  .marquee{ display:flex; gap:3rem; animation: mv 40s linear infinite; }
+  @keyframes mv { to { transform:translateX(-50%) } }
+  .dot{ width:6px; height:6px; border-radius:50%; background:#c9a962; display:inline-block; }
+  .stamp{
+    border:2px solid #6b1e1e; color:#6b1e1e; letter-spacing:.25em;
+    transform: rotate(-6deg);
+    font-family:'Trirong',serif;
+  }
+  /* image treatment */
+  .duotone{
+    filter: sepia(.35) saturate(1.05) contrast(1.05);
+  }
+  .hero-img-mask{
+    -webkit-mask-image: radial-gradient(120% 90% at 60% 40%, #000 55%, transparent 100%);
+            mask-image: radial-gradient(120% 90% at 60% 40%, #000 55%, transparent 100%);
+  }
+  a.btn-gold{
+    background: linear-gradient(180deg,#e6c675,#c9a962);
+    color:#0d2a2e; font-weight:600; letter-spacing:.08em;
+    box-shadow: 0 6px 22px -8px rgba(201,169,98,.65), inset 0 -2px 0 rgba(107,30,30,.25);
+  }
+  a.btn-gold:hover{ filter:brightness(1.05) }
+  .section-label{
+    font-family:'Trirong',serif; font-style:italic; letter-spacing:.4em;
+    color:#6b1e1e;
+  }
+  .stat-num{
+    font-family:'Trirong',serif; font-weight:600; color:#0d2a2e;
+  }
+  details > summary { list-style:none; cursor:pointer; }
+  details > summary::-webkit-details-marker{display:none}
+  details[open] .plus{ transform:rotate(45deg) }
+  .plus{ transition:.3s }
+  .ticker-item{ font-family:'Trirong',serif; font-style:italic; }
+</style>
+</head>
+<body class="relative">
+
+<!-- ================== TOP RIBBON ================== -->
+<div class="bg-teakDeep text-ivory/80 text-[11px] tracking-[0.3em] uppercase">
+  <div class="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
+    <span class="font-body">ราชบุรี · ประเทศไทย</span>
+    <span class="hidden md:inline">คู่มือฉบับพิเศษ ฉบับที่ ๐๑ · พ.ศ. ๒๕๖๙</span>
+    <span class="text-gold">★ ๓.๘ / ๓๔,๔๔๙ รีวิว</span>
+  </div>
+</div>
+
+<!-- ================== NAV ================== -->
+<header class="sticky top-0 z-40 backdrop-blur bg-ivory/80 border-b border-gold/30">
+  <nav class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3">
+      <svg width="34" height="34" viewBox="0 0 40 40" fill="none">
+        <path d="M20 3 C24 12, 32 14, 34 20 C30 22, 28 30, 20 37 C12 30, 10 22, 6 20 C8 14, 16 12, 20 3Z" fill="#c9a962" stroke="#0d2a2e" stroke-width="1.2"/>
+        <circle cx="20" cy="20" r="3" fill="#6b1e1e"/>
+      </svg>
+      <div class="leading-tight">
+        <div class="font-display font-semibold text-teak">ตลาดน้ำดำเนินสะดวก</div>
+        <div class="text-[10px] tracking-[0.3em] text-burgundy uppercase">Damnoen Saduak</div>
+      </div>
+    </a>
+    <ul class="hidden md:flex items-center gap-8 text-sm">
+      <li><a href="#about" class="hover:text-burgundy">เกี่ยวกับ</a></li>
+      <li><a href="#guide" class="hover:text-burgundy">คู่มือเยี่ยมชม</a></li>
+      <li><a href="#food" class="hover:text-burgundy">รสชาติสายน้ำ</a></li>
+      <li><a href="#map"  class="hover:text-burgundy">แผนที่</a></li>
+    </ul>
+    <a href="#map" class="btn-gold text-xs px-4 py-2 rounded-full uppercase">เดินทาง</a>
+  </nav>
+</header>
+
+<!-- ================== HERO ================== -->
+<section class="relative overflow-hidden grain" id="hero">
+  <div class="absolute inset-0">
+    <div class="absolute inset-0 bg-gradient-to-b from-ivory via-ivoryDim to-ivory"></div>
+    <!-- decorative gold sun -->
+    <svg class="absolute -right-24 -top-24 opacity-30" width="520" height="520" viewBox="0 0 200 200" fill="none">
+      <g stroke="#c9a962" stroke-width=".6">
+        <circle cx="100" cy="100" r="95"/><circle cx="100" cy="100" r="78"/><circle cx="100" cy="100" r="62"/>
+        <circle cx="100" cy="100" r="48"/><circle cx="100" cy="100" r="34"/>
+      </g>
+      <g stroke="#c9a962" stroke-width=".4">
+        <line x1="100" y1="0" x2="100" y2="200"/><line x1="0" y1="100" x2="200" y2="100"/>
+        <line x1="15" y1="15" x2="185" y2="185"/><line x1="15" y1="185" x2="185" y2="15"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-6 pt-16 pb-24 md:pt-24 md:pb-32 grid md:grid-cols-12 gap-8 items-end">
+
+    <!-- Left column: numbers/labels -->
+    <aside class="md:col-span-2 hidden md:flex flex-col justify-between h-[520px] fade-up">
+      <div class="vwriting text-[10px] tracking-[.5em] uppercase text-burgundy">Est. ๒๕๐๐ · ตลาดริมคลองแห่งราชบุรี</div>
+      <div class="rule-gold w-16 rotate-90 origin-left translate-y-24"></div>
+      <div class="text-xs tracking-[.3em] text-teak/70">N ๑๓.๕๑° · E ๙๙.๙๕°</div>
+    </aside>
+
+    <!-- Center title -->
+    <div class="md:col-span-7 relative">
+      <div class="section-label text-xs mb-6 fade-up">— ๐๑ · ตำนานสายน้ำ ตะวันออกไม่มีวันตก —</div>
+      <h1 class="font-display hero-title fade-up delay-1 text-[13vw] md:text-[9rem] font-semibold text-teak">
+        ตลาด<span class="gold-text">น้ำ</span><br/>
+        ดำเนิน<em class="italic font-normal">สะดวก</em>
+      </h1>
+      <div class="ornament my-8 flex items-center gap-4 fade-up delay-2">
+        <span class="dot"></span>
+        <svg width="180" height="16" viewBox="0 0 180 16">
+          <path d="M2 8 Q 18 -4 32 8 T 62 8 T 92 8 T 122 8 T 152 8 T 178 8" stroke="#c9a962" stroke-width="1.2" fill="none"/>
+          <circle cx="90" cy="8" r="3" fill="#6b1e1e"/>
+        </svg>
+        <span class="dot"></span>
+      </div>
+      <p class="font-body max-w-xl text-teak/85 leading-relaxed text-lg fade-up delay-3">
+        เรือพายไม้เก่าลอยเรียงตามคลองที่ขุดขึ้นในสมัยรัชกาลที่ ๔ กลิ่นก๋วยเตี๋ยวเรือลอยขึ้นมาปะทะกับกลิ่นมะพร้าวเผา
+        ผ้าไหมสีอัญมณีสะท้อนแสงเช้า — นี่คือหัวใจของวิถีสยามที่ยังเต้นเป็นจังหวะเดียวกับสายน้ำมาแล้วกว่าร้อยหกสิบปี.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center gap-5 fade-up delay-4">
+        <a href="#guide" class="btn-gold px-6 py-3 rounded-full text-xs uppercase">เริ่มการเดินทาง</a>
+        <a href="#food" class="text-sm underline decoration-gold underline-offset-8 hover:text-burgundy">ลิ้มรสสายน้ำ →</a>
+      </div>
+    </div>
+
+    <!-- Right column: floating image card -->
+    <div class="md:col-span-3 relative fade-up delay-2">
+      <div class="relative float-slow">
+        <div class="absolute -inset-3 border border-gold/60"></div>
+        <div class="absolute -inset-6 border border-gold/25"></div>
+        <img class="duotone w-full h-[380px] object-cover" src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80" alt="เรือพายในตลาดน้ำ" onerror="this.src='https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80'">
+        <div class="absolute -bottom-4 -left-4 bg-teak text-ivory text-[10px] tracking-[.3em] uppercase px-3 py-1">ฉบับหนึ่ง</div>
+      </div>
+      <div class="mt-8 stamp inline-block px-3 py-1 text-xs">มรดกวัฒนธรรม ๒๕๖๙</div>
+    </div>
+  </div>
+
+  <!-- Marquee -->
+  <div class="relative border-y border-gold/40 bg-teak text-ivory overflow-hidden">
+    <div class="marquee py-3 whitespace-nowrap text-sm">
+      <div class="flex gap-12">
+        <span class="ticker-item">✦ ก๋วยเตี๋ยวเรือ</span><span class="ticker-item">✦ มะพร้าวน้ำหอม</span><span class="ticker-item">✦ ขนมครก</span><span class="ticker-item">✦ ผัดไทยห่อไข่</span><span class="ticker-item">✦ ตะโก้ใบเตย</span><span class="ticker-item">✦ ส้มโอขาวใหญ่</span><span class="ticker-item">✦ ทุเรียนป่านั้น</span><span class="ticker-item">✦ เรือพายไม้</span>
+      </div>
+      <div class="flex gap-12" aria-hidden="true">
+        <span class="ticker-item">✦ ก๋วยเตี๋ยวเรือ</span><span class="ticker-item">✦ มะพร้าวน้ำหอม</span><span class="ticker-item">✦ ขนมครก</span><span class="ticker-item">✦ ผัดไทยห่อไข่</span><span class="ticker-item">✦ ตะโก้ใบเตย</span><span class="ticker-item">✦ ส้มโอขาวใหญ่</span><span class="ticker-item">✦ ทุเรียนป่านั้น</span><span class="ticker-item">✦ เรือพายไม้</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== ABOUT ================== -->
+<section id="about" class="relative py-24 md:py-32 bg-ivory">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-10">
+    <div class="md:col-span-4">
+      <div class="section-label text-xs mb-4">— ๐๒ · เกี่ยวกับตลาด</div>
+      <h2 class="font-display text-5xl md:text-6xl text-teak leading-[1.05]">
+        เมื่อ<span class="gold-text italic">คลอง</span><br/>คือถนน<br/>เมื่อเรือ<br/>คือร้านค้า
+      </h2>
+      <div class="rule-gold w-40 my-8"></div>
+      <p class="font-body text-teak/85 leading-relaxed">
+        ตลาดน้ำดำเนินสะดวกเปิดค้าขายอย่างเป็นทางการมาตั้งแต่ พ.ศ. ๒๕๑๐ ตั้งอยู่บนคลองดำเนินสะดวก
+        ซึ่งเชื่อมแม่น้ำท่าจีนกับแม่น้ำแม่กลอง คลองยาวราว ๓๒ กิโลเมตร กลายเป็นเส้นเลือดใหญ่ของชาวสวน
+        และเป็นภาพจำของประเทศไทยที่โลกคุ้นตามากที่สุด.
+      </p>
+      <p class="font-hand text-3xl text-burgundy mt-6">"สายน้ำเลี้ยงชีวิต ชีวิตเลี้ยงเมือง"</p>
+    </div>
+
+    <!-- Highlights grid -->
+    <div class="md:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div class="card-paper p-6 relative overflow-hidden">
+        <div class="stat-num text-5xl">๑๖๐<span class="text-gold text-2xl">+</span></div>
+        <div class="tag text-burgundy text-sm mt-2">ปีแห่งการค้าขายทางเรือ</div>
+      </div>
+      <div class="card-paper p-6">
+        <div class="stat-num text-5xl">๐๗:๐๐</div>
+        <div class="tag text-burgundy text-sm mt-2">ช่วงเวลาทองของแสงเช้า</div>
+      </div>
+      <div class="card-paper p-6">
+        <div class="stat-num text-5xl">๓๒ กม.</div>
+        <div class="tag text-burgundy text-sm mt-2">ความยาวของคลองสาย</div>
+      </div>
+      <div class="card-paper p-6 col-span-2 md:col-span-2 flex items-center gap-6">
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+          <path d="M6 42 Q30 30 54 42 L52 46 Q30 34 8 46 Z" fill="#0d2a2e"/>
+          <path d="M18 40 L26 20 L34 40 Z" fill="#c9a962" stroke="#0d2a2e"/>
+          <circle cx="26" cy="24" r="2" fill="#6b1e1e"/>
+        </svg>
+        <div>
+          <div class="tag text-sm text-burgundy">จุดเด่น ๐๑</div>
+          <div class="font-display text-2xl text-teak">เรือพายไม้สักดั้งเดิม</div>
+          <p class="text-sm text-teak/75 mt-1">เรือทรงเพรียวยาวประมาณ ๗ เมตร บรรทุกผลไม้ทั้งลำเหมือนภาพในโปสการ์ดยุค ๗๐s</p>
+        </div>
+      </div>
+      <div class="card-paper p-6">
+        <div class="tag text-sm text-burgundy">จุดเด่น ๐๒</div>
+        <div class="font-display text-2xl text-teak leading-tight mt-1">หมวกงอบ<br/>สีฟางทอง</div>
+        <p class="text-sm text-teak/75 mt-2">สัญลักษณ์ของแม่ค้าเรือ ทำจากใบลานสาน</p>
+      </div>
+      <div class="card-paper p-6">
+        <div class="tag text-sm text-burgundy">จุดเด่น ๐๓</div>
+        <div class="font-display text-2xl text-teak leading-tight mt-1">กลิ่นมะพร้าว<br/>เผาไฟถ่าน</div>
+        <p class="text-sm text-teak/75 mt-2">หอมกรุ่นตลอดสองฝั่งคลอง เป็นกลิ่นประจำถิ่น</p>
+      </div>
+      <div class="card-paper p-6 col-span-2 md:col-span-3 bg-teak text-ivory">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <div class="tag text-sm text-goldBright">คำแนะนำจากบรรณาธิการ</div>
+            <div class="font-display text-2xl md:text-3xl mt-1">มาถึงก่อนพระอาทิตย์ขึ้น เพื่อสัมผัสตลาดที่ยังไม่ถูกเวลาแตะต้อง</div>
+          </div>
+          <a href="#guide" class="text-xs tracking-[.3em] uppercase border border-gold/60 px-4 py-2 hover:bg-gold hover:text-teak">อ่านคู่มือ →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== VISIT GUIDE ================== -->
+<section id="guide" class="relative py-24 md:py-32 bg-teak text-ivory overflow-hidden grain">
+  <div class="absolute inset-0 opacity-20 pointer-events-none">
+    <svg class="absolute -left-24 top-10" width="360" height="360" viewBox="0 0 100 100">
+      <path d="M50 5 C60 25 80 30 90 50 C80 70 60 75 50 95 C40 75 20 70 10 50 C20 30 40 25 50 5Z" fill="none" stroke="#c9a962" stroke-width=".3"/>
+      <path d="M50 15 C58 30 72 34 80 50 C72 66 58 70 50 85 C42 70 28 66 20 50 C28 34 42 30 50 15Z" fill="none" stroke="#c9a962" stroke-width=".3"/>
+    </svg>
+  </div>
+
+  <div class="relative max-w-7xl mx-auto px-6">
+    <div class="flex items-end justify-between flex-wrap gap-6 mb-14">
+      <div>
+        <div class="section-label text-goldBright text-xs">— ๐๓ · คู่มือเยี่ยมชม</div>
+        <h2 class="font-display text-5xl md:text-7xl leading-[1] mt-4">
+          เวลา <span class="gold-text italic">แสง</span> และ<br/>
+          <em class="italic font-normal">การเดินทาง</em>
+        </h2>
+      </div>
+      <p class="max-w-md font-body text-ivory/75">
+        ตลาดคึกคักที่สุดในช่วง ๐๗:๐๐ – ๑๑:๐๐ น. หลังจากนั้นจะเงียบสงบและเหมาะแก่การถ่ายภาพในมุมที่ไร้ผู้คน.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <!-- open hours card -->
+      <div class="border border-gold/40 p-8 relative">
+        <div class="absolute top-4 right-4 text-[10px] tracking-[.3em] text-goldBright">HRS · ๐๑</div>
+        <div class="tag text-goldBright text-sm">เวลาเปิดทำการ</div>
+        <div class="font-display text-3xl mt-3 leading-tight">ทุกวัน<br/><span class="text-goldBright">๐๗:๐๐ – ๑๗:๐๐ น.</span></div>
+        <div class="rule-gold w-24 my-5"></div>
+        <ul class="text-sm space-y-2 text-ivory/80">
+          <li class="flex justify-between"><span>ช่วงคึกคักสูงสุด</span><span class="text-goldBright">๐๘–๑๐ น.</span></li>
+          <li class="flex justify-between"><span>ช่วงเงียบสงบ</span><span class="text-goldBright">๑๓–๑๕ น.</span></li>
+          <li class="flex justify-between"><span>เทศกาลพิเศษ</span><span class="text-goldBright">สงกรานต์ · ลอยกระทง</span></li>
+        </ul>
+      </div>
+
+      <!-- ticket -->
+      <div class="border border-gold/40 p-8 relative">
+        <div class="absolute top-4 right-4 text-[10px] tracking-[.3em] text-goldBright">FEE · ๐๒</div>
+        <div class="tag text-goldBright text-sm">ค่าบริการโดยประมาณ</div>
+        <div class="font-display text-3xl mt-3 leading-tight">เข้าตลาด <span class="text-goldBright">ฟรี</span></div>
+        <div class="rule-gold w-24 my-5"></div>
+        <ul class="text-sm space-y-2 text-ivory/80">
+          <li class="flex justify-between"><span>เรือพาย ๑ ชม. (ต่อลำ)</span><span class="text-goldBright">฿๑,๕๐๐</span></li>
+          <li class="flex justify-between"><span>เรือหางยาว ๑ ชม.</span><span class="text-goldBright">฿๒,๐๐๐</span></li>
+          <li class="flex justify-between"><span>เรือรวมกลุ่ม (ต่อคน)</span><span class="text-goldBright">฿๒๐๐</span></li>
+        </ul>
+        <p class="text-[11px] text-ivory/50 mt-4 italic">*ราคาอาจแปรผันตามฤดูกาลและช่วงเทศกาล</p>
+      </div>
+
+      <!-- transport -->
+      <div class="border border-gold/40 p-8 relative">
+        <div class="absolute top-4 right-4 text-[10px] tracking-[.3em] text-goldBright">WAY · ๐๓</div>
+        <div class="tag text-goldBright text-sm">การเดินทางจากกรุงเทพฯ</div>
+        <div class="font-display text-3xl mt-3 leading-tight">ห่างจากเมืองหลวง <span class="text-goldBright">๑๐๐ กม.</span></div>
+        <div class="rule-gold w-24 my-5"></div>
+        <ul class="text-sm space-y-2 text-ivory/80">
+          <li class="flex justify-between"><span>รถยนต์ส่วนตัว</span><span class="text-goldBright">~๑.๕ ชม.</span></li>
+          <li class="flex justify-between"><span>รถตู้สายใต้ใหม่</span><span class="text-goldBright">~๒ ชม.</span></li>
+          <li class="flex justify-between"><span>ทัวร์ครึ่งวัน</span><span class="text-goldBright">฿๘๐๐+</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="mt-20 grid md:grid-cols-12 gap-10">
+      <div class="md:col-span-4">
+        <div class="section-label text-goldBright text-xs mb-3">— คำถามที่พบบ่อย</div>
+        <h3 class="font-display text-3xl md:text-4xl">เตรียมใจ<br/><em class="italic gold-text">ก่อนล่องคลอง</em></h3>
+      </div>
+      <div class="md:col-span-8 divide-y divide-gold/25">
+        <details class="py-5 group">
+          <summary class="flex items-center justify-between">
+            <span class="font-display text-xl">ควรมาช่วงไหนของปี?</span>
+            <span class="plus font-display text-goldBright text-2xl">＋</span>
+          </summary>
+          <p class="mt-3 text-ivory/75 text-sm max-w-3xl">พฤศจิกายน – กุมภาพันธ์ อากาศเย็นสบายและฝนน้อย เป็นช่วงที่นักท่องเที่ยวนิยมที่สุด. หากต้องการหลีกเลี่ยงฝูงชน แนะนำวันธรรมดาช่วงเช้าตรู่.</p>
+        </details>
+        <details class="py-5 group">
+          <summary class="flex items-center justify-between">
+            <span class="font-display text-xl">ต่อรองราคาได้ไหม?</span>
+            <span class="plus font-display text-goldBright text-2xl">＋</span>
+          </summary>
+          <p class="mt-3 text-ivory/75 text-sm max-w-3xl">ได้ค่ะ ทั้งค่าเช่าเรือและของที่ระลึก การต่อรองอย่างสุภาพเป็นส่วนหนึ่งของวัฒนธรรม ควรยิ้มและเสนอราคาที่สมเหตุสมผล (ประมาณ ๗๐–๘๐% ของราคาแรก).</p>
+        </details>
+        <details class="py-5 group">
+          <summary class="flex items-center justify-between">
+            <span class="font-display text-xl">พาเด็กเล็กไปได้หรือไม่?</span>
+            <span class="plus font-display text-goldBright text-2xl">＋</span>
+          </summary>
+          <p class="mt-3 text-ivory/75 text-sm max-w-3xl">ได้ แต่แนะนำให้สวมเสื้อชูชีพในเรือ และระวังทางเดินไม้ริมคลองที่อาจลื่น. ห้องน้ำสาธารณะมีบริการที่ทางเข้าหลัก.</p>
+        </details>
+        <details class="py-5 group">
+          <summary class="flex items-center justify-between">
+            <span class="font-display text-xl">ควรแต่งกายอย่างไร?</span>
+            <span class="plus font-display text-goldBright text-2xl">＋</span>
+          </summary>
+          <p class="mt-3 text-ivory/75 text-sm max-w-3xl">เสื้อผ้าเย็นสบาย ผ้าฝ้าย หรือลินิน หมวกปีกกว้าง ครีมกันแดด และรองเท้าที่ถอดง่าย เพราะบางร้านต้องถอดรองเท้าก่อนเข้า.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== FOOD ================== -->
+<section id="food" class="relative py-24 md:py-32 bg-ivory overflow-hidden">
+  <div class="absolute top-10 right-10 hidden md:block">
+    <svg width="180" height="180" viewBox="0 0 100 100" class="opacity-30">
+      <g stroke="#6b1e1e" stroke-width=".5" fill="none">
+        <path d="M50 10 C70 20 80 40 70 60 C60 80 40 80 30 60 C20 40 30 20 50 10Z"/>
+        <path d="M50 25 C63 33 68 46 62 58 C56 70 44 70 38 58 C32 46 37 33 50 25Z"/>
+        <circle cx="50" cy="50" r="4" fill="#c9a962"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-12 gap-10 items-end mb-16">
+      <div class="md:col-span-6">
+        <div class="section-label text-xs">— ๐๔ · รสชาติสายน้ำ</div>
+        <h2 class="font-display text-5xl md:text-7xl text-teak leading-[1] mt-4">
+          เมนู<span class="gold-text italic">แนะนำ</span><br/>ที่ต้องลิ้มลอง
+        </h2>
+      </div>
+      <p class="md:col-span-6 font-body text-teak/80 md:text-lg">
+        อาหารที่นี่ปรุงบนเรือด้วยเตาถ่านขนาดเล็ก จานเดียวแต่ครบรส
+        — เผ็ด เปรี้ยว เค็ม หวาน กลมกลืนอย่างที่ครัวชั้นเลิศไม่สามารถลอกเลียนได้.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-6">
+      <!-- Feature dish (large) -->
+      <article class="md:col-span-6 relative group overflow-hidden">
+        <div class="relative aspect-[4/5] overflow-hidden">
+          <img class="duotone w-full h-full object-cover transition duration-700 group-hover:scale-105" src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=1000&q=80" alt="ก๋วยเตี๋ยวเรือ" onerror="this.src='https://images.unsplash.com/photo-1552611052-33e04de081de?w=1000&q=80'">
+          <div class="absolute inset-0 bg-gradient-to-t from-teak/85 via-teak/10 to-transparent"></div>
+          <div class="absolute top-6 left-6 stamp text-xs px-3 py-1 bg-ivory">จานเด่น</div>
+          <div class="absolute bottom-0 left-0 right-0 p-8 text-ivory">
+            <div class="tag text-goldBright text-sm">๐๑ · จานที่ต้องสั่ง</div>
+            <h3 class="font-display text-4xl md:text-5xl mt-2">ก๋วยเตี๋ยวเรือ<br/><em class="italic text-goldBright">น้ำตก</em></h3>
+            <p class="mt-3 text-ivory/85 max-w-md text-sm">น้ำซุปเข้มข้นจากเลือดหมูและเครื่องเทศ ชามเล็กชามเดียวไม่พอ แม่ค้ามักตักให้กินกันเป็น ๓–๔ ชามต่อคน.</p>
+            <div class="mt-4 text-goldBright font-display text-2xl">฿๑๕ / ชาม</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Side dishes -->
+      <div class="md:col-span-6 grid grid-cols-2 gap-6">
+        <article class="card-paper p-5">
+          <div class="aspect-square overflow-hidden mb-4">
+            <img class="duotone w-full h-full object-cover" src="https://images.unsplash.com/photo-1559847844-5315695dadae?w=600&q=80" alt="ขนมครก" onerror="this.src='https://images.unsplash.com/photo-1512058564366-18510be2db19?w=600&q=80'">
+          </div>
+          <div class="tag text-burgundy text-xs">๐๒</div>
+          <h4 class="font-display text-2xl text-teak">ขนมครก</h4>
+          <p class="text-xs text-teak/70 mt-1">แป้งข้าวเจ้าย่างในเบ้าดินเผา หวานมันด้วยกะทิสด.</p>
+          <div class="text-burgundy font-display text-lg mt-2">฿๒๐ / ชุด</div>
+        </article>
+
+        <article class="card-paper p-5">
+          <div class="aspect-square overflow-hidden mb-4">
+            <img class="duotone w-full h-full object-cover" src="https://images.unsplash.com/photo-1552611052-d0d1737f9ded?w=600&q=80" alt="ผัดไทย" onerror="this.src='https://images.unsplash.com/photo-1559314809-0d155014e29e?w=600&q=80'">
+          </div>
+          <div class="tag text-burgundy text-xs">๐๓</div>
+          <h4 class="font-display text-2xl text-teak">ผัดไทยห่อไข่</h4>
+          <p class="text-xs text-teak/70 mt-1">เส้นจันท์ผัดสูตรโบราณ ห่อไข่บาง โรยถั่วลิสง.</p>
+          <div class="text-burgundy font-display text-lg mt-2">฿๖๐ / จาน</div>
+        </article>
+
+        <article class="card-paper p-5">
+          <div class="aspect-square overflow-hidden mb-4">
+            <img class="duotone w-full h-full object-cover" src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80" alt="มะพร้าวน้ำหอม" onerror="this.src='https://images.unsplash.com/photo-1608797178993-a062e1b4f6b1?w=600&q=80'">
+          </div>
+          <div class="tag text-burgundy text-xs">๐๔</div>
+          <h4 class="font-display text-2xl text-teak">มะพร้าวเผา</h4>
+          <p class="text-xs text-teak/70 mt-1">เผาเปลือกให้กลิ่นควันซึม น้ำมะพร้าวหวานเย็นชื่นใจ.</p>
+          <div class="text-burgundy font-display text-lg mt-2">฿๕๐ / ลูก</div>
+        </article>
+
+        <article class="card-paper p-5">
+          <div class="aspect-square overflow-hidden mb-4">
+            <img class="duotone w-full h-full object-cover" src="https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?w=600&q=80" alt="ตะโก้" onerror="this.src='https://images.unsplash.com/photo-1519676867240-f03562e64548?w=600&q=80'">
+          </div>
+          <div class="tag text-burgundy text-xs">๐๕</div>
+          <h4 class="font-display text-2xl text-teak">ตะโก้ใบเตย</h4>
+          <p class="text-xs text-teak/70 mt-1">ขนมไทยโบราณ สองชั้น หวาน–เค็มลงตัว.</p>
+          <div class="text-burgundy font-display text-lg mt-2">฿๓๐ / ชุด</div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Editorial quote -->
+    <blockquote class="mt-20 border-l-2 border-burgundy pl-8 max-w-3xl">
+      <p class="font-display italic text-2xl md:text-3xl text-teak leading-snug">
+        "รสชาติที่นี่ไม่ได้เกิดจากสูตร แต่เกิดจากเวลา — แสงเช้าที่กระทบไอน้ำ กลิ่นควันจากเบ้าดินเผา
+        และรอยยิ้มของแม่ค้าที่เห็นเรือของเราแต่ไกล."
+      </p>
+      <footer class="tag text-burgundy text-sm mt-4">— หนึ่งวัน หนึ่งคลอง, บันทึกจากบรรณาธิการ</footer>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ================== MAP / CONTACT ================== -->
+<section id="map" class="relative py-24 md:py-32 bg-ink text-ivory overflow-hidden">
+  <!-- Decorative ornament -->
+  <svg class="absolute right-0 top-0 opacity-20" width="480" height="480" viewBox="0 0 200 200">
+    <g fill="none" stroke="#c9a962" stroke-width=".4">
+      <path d="M100 20 Q140 60 100 100 Q60 140 100 180"/>
+      <path d="M20 100 Q60 60 100 100 Q140 140 180 100"/>
+      <circle cx="100" cy="100" r="60"/>
+      <circle cx="100" cy="100" r="40"/>
+    </g>
+  </svg>
+
+  <div class="relative max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-10">
+    <div class="md:col-span-5">
+      <div class="section-label text-goldBright text-xs">— ๐๕ · ที่ตั้งและการติดต่อ</div>
+      <h2 class="font-display text-5xl md:text-7xl leading-[1] mt-4">
+        พบเรา<br/><em class="italic gold-text">ริมคลอง</em>
+      </h2>
+      <div class="rule-gold w-40 my-8"></div>
+
+      <ul class="space-y-6 text-sm">
+        <li>
+          <div class="tag text-goldBright text-xs">ที่อยู่</div>
+          <div class="font-display text-lg mt-1">Damnoen Saduak, อำเภอดำเนินสะดวก<br/>จังหวัดราชบุรี ๗๐๑๓๐ ประเทศไทย</div>
+        </li>
+        <li>
+          <div class="tag text-goldBright text-xs">โทรศัพท์</div>
+          <a href="tel:+66852227470" class="font-display text-lg mt-1 block hover:text-goldBright">+๖๖ ๘๕ ๒๒๒ ๗๔๗๐</a>
+        </li>
+        <li>
+          <div class="tag text-goldBright text-xs">Plus Code</div>
+          <div class="font-display text-lg mt-1 tracking-wider">GXC5+3C · Damnoen Saduak</div>
+        </li>
+        <li>
+          <div class="tag text-goldBright text-xs">พิกัด</div>
+          <div class="font-display text-lg mt-1">๑๓.๕๑°N · ๙๙.๙๕°E</div>
+        </li>
+      </ul>
+
+      <a href="https://maps.app.goo.gl/DAR94g91aeJne7Y96" target="_blank" rel="noopener" class="btn-gold inline-block mt-10 px-6 py-3 rounded-full text-xs uppercase">
+        เปิดใน Google Maps ↗
+      </a>
+    </div>
+
+    <div class="md:col-span-7">
+      <div class="relative aspect-[4/3] w-full frame-gold overflow-hidden">
+        <iframe
+          class="w-full h-full grayscale-[.3] contrast-105"
+          src="https://www.google.com/maps?q=Damnoen+Saduak+Floating+Market&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <div class="mt-6 grid grid-cols-3 gap-4 text-xs">
+        <div class="border border-gold/40 p-4">
+          <div class="tag text-goldBright">คะแนน</div>
+          <div class="font-display text-2xl mt-1">๓.๘<span class="text-goldBright text-sm"> / ๕</span></div>
+          <div class="text-ivory/60 mt-1">๓๔,๔๔๙ รีวิว</div>
+        </div>
+        <div class="border border-gold/40 p-4">
+          <div class="tag text-goldBright">ประเภท</div>
+          <div class="font-display text-xl mt-1">ตลาดน้ำ</div>
+          <div class="text-ivory/60 mt-1">มรดกวัฒนธรรม</div>
+        </div>
+        <div class="border border-gold/40 p-4">
+          <div class="tag text-goldBright">ที่จอดรถ</div>
+          <div class="font-display text-xl mt-1">มีบริการ</div>
+          <div class="text-ivory/60 mt-1">฿๒๐–๕๐ / คัน</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================== FOOTER ================== -->
+<footer class="bg-teakDeep text-ivory/70 py-16 border-t border-gold/30">
+  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-10">
+    <div class="md:col-span-5">
+      <div class="flex items-center gap-3">
+        <svg width="30" height="30" viewBox="0 0 40 40" fill="none">
+          <path d="M20 3 C24 12, 32 14, 34 20 C30 22, 28 30, 20 37 C12 30, 10 22, 6 20 C8 14, 16 12, 20 3Z" fill="#c9a962"/>
+        </svg>
+        <div class="font-display text-ivory text-xl">ตลาดน้ำดำเนินสะดวก</div>
+      </div>
+      <p class="mt-4 text-sm max-w-md">
+        คู่มือฉบับดิจิทัลสำหรับผู้เดินทางที่หลงใหลในสายน้ำ วัฒนธรรม และรสชาติที่แท้จริงของประเทศไทย.
+      </p>
+    </div>
+    <div class="md:col-span-3">
+      <div class="tag text-goldBright text-xs mb-3">นำทาง</div>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#about" class="hover:text-goldBright">เกี่ยวกับ</a></li>
+        <li><a href="#guide" class="hover:text-goldBright">คู่มือเยี่ยมชม</a></li>
+        <li><a href="#food"  class="hover:text-goldBright">รสชาติสายน้ำ</a></li>
+        <li><a href="#map"   class="hover:text-goldBright">แผนที่</a></li>
+      </ul>
+    </div>
+    <div class="md:col-span-4">
+      <div class="tag text-goldBright text-xs mb-3">ข้อควรทราบ</div>
+      <p class="text-sm">เว็บไซต์นี้จัดทำเพื่อการแนะนำการท่องเที่ยว. ราคาและเวลาเปิดอาจมีการเปลี่ยนแปลง แนะนำให้ยืนยันกับผู้ประกอบการก่อนเดินทาง.</p>
+      <div class="rule-gold w-full my-6"></div>
+      <div class="text-xs tracking-[.3em] uppercase text-ivory/50">© ๒๕๖๙ Damnoen Saduak Guide</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
