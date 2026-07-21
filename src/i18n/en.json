@@ -114,15 +114,16 @@
         { "title": "Food & fruit", "desc": "From 20–50 THB" }
       ]
     },
-    "transport": {
-      "tag": "03",
-      "title": "Getting there",
-      "items": [
-        { "title": "Private car", "desc": "From Bangkok take Highway 9 then 340, ~100 km, about 1.5 hrs" },
-        { "title": "Van / songthaew", "desc": "Van from Bangkok Southern Bus Terminal to Ratchaburi, then a songthaew to the market" },
-        { "title": "Day tour", "desc": "Bangkok day-trip packages including transfer and a canal boat tour" }
-      ]
-    },
+      "transport": {
+        "tag": "03",
+        "title": "Getting there",
+        "items": [
+          { "title": "Private car", "desc": "From Bangkok take Highway 9 then 340, ~100 km, about 1.5 hrs" },
+          { "title": "Van / songthaew", "desc": "Van from Bangkok Southern Bus Terminal to Ratchaburi, then a songthaew to the market" },
+          { "title": "From the airport", "desc": "The nearest airports are Bangkok's two hubs (Suvarnabhumi / Don Mueang); on arrival, drive, take a van, or join a transfer-included day tour — about 1.5–2 hrs by road" },
+          { "title": "Day tour", "desc": "Bangkok day-trip packages including transfer and a canal boat tour" }
+        ]
+      },
     "faqTitle": "Frequently asked questions",
     "faqs": [
       { "q": "Which day is best to visit?", "a": "Weekdays are quieter than weekends, and pre-dawn gives the most authentic atmosphere." },
@@ -227,7 +228,9 @@
     "mapsLabel": "Google Maps →",
     "sourcesTitle": "Sources & References",
     "sourcesNote": "The facts, coordinates and opening hours on this site are compiled from the authoritative sources below for your further verification.",
-    "orgLine": "A non-profit educational travel guide",
+    "disclaimerLead": "This site is a public-interest informational guide and is not an official outlet. We welcome your updates and corrections by email.",
+    "unofficial": "Unofficial independent non-profit / UNOFFICIAL INDEPENDENT NON-PROFIT: This website is an independent non-profit visitor-information project. We are not affiliated with any government agency or official organization.",
+    "dataSource": "Data source · Data Source: The attraction information cited here is verified against public materials from the Tourism Authority of Thailand and the Chiang Mai municipality, with no commercial endorsements.",
     "copyright": "© 2026 Damnoen Saduak Floating Market — a non-profit educational travel guide"
   }
 }

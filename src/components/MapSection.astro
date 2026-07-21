@@ -8,8 +8,6 @@ interface Props {
 const { messages } = Astro.props;
 const map = messages.mapSection;
 const { lat, lng } = siteConfig.coords;
-const bbox = `${lng - 0.012},${lat - 0.012},${lng + 0.012},${lat + 0.012}`;
-const osm = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lng}`;
 ---
 
 <section id="map" class="py-20 bg-ivory text-ink">
@@ -44,12 +42,13 @@ const osm = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=
 
       <div class="rounded-2xl overflow-hidden border border-gold/30 h-[320px] md:h-auto">
         <iframe
-          src={osm}
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3879.2512231470987!2d99.9586044!3d13.5201684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2d7b8c9fd1f51%3A0x584ed0368907e1db!2z5Li55aup5rKZ5aSa5rC05LiK5biC5Zy6!5e0!3m2!1szh-CN!2sus!4v1784601855745!5m2!1szh-CN!2sus"
           title={map.heading}
           class="w-full h-full"
           style="border:0"
+          allowfullscreen=""
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
+          referrerpolicy="strict-origin-when-cross-origin"
         ></iframe>
       </div>
     </div>
