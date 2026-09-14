@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Damnoen Saduak Floating Market">
+  <rect width="512" height="512" rx="96" fill="#0d2a2e"/>
+
+  <g transform="translate(0 0) scale(1)">
+    <!-- water -->
+    <path d="M60 350 q60 -22 120 0 t120 0 t120 0 t92 0" fill="none" stroke="#c9a962" stroke-width="14" stroke-linecap="round" opacity="0.75"/>
+    <path d="M84 402 q60 -22 120 0 t120 0 t120 0" fill="none" stroke="#c9a962" stroke-width="10" stroke-linecap="round" opacity="0.45"/>
+    <!-- hull -->
+    <path d="M126 268 h260 l-34 74 a26 26 0 0 1 -22 12 h-148 a26 26 0 0 1 -22 -12 z" fill="#e6c675"/>
+    <path d="M150 288 h212" stroke="#0d2a2e" stroke-width="10" stroke-linecap="round" opacity="0.65"/>
+    <!-- canopy -->
+    <path d="M162 268 v-46 h188 v46" fill="none" stroke="#e6c675" stroke-width="12" stroke-linejoin="round"/>
+    <path d="M146 222 h220 l-18 -34 h-184 z" fill="#c9a962"/>
+    <!-- paddler -->
+    <circle cx="256" cy="182" r="20" fill="#e6c675"/>
+    <path d="M256 204 v44" stroke="#e6c675" stroke-width="14" stroke-linecap="round"/>
+    <path d="M200 316 l112 -122" stroke="#c9a962" stroke-width="12" stroke-linecap="round"/>
+  </g>
+</svg>

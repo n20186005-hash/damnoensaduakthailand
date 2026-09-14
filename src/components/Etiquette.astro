@@ -1,0 +1,56 @@
+---
+interface Props {
+  messages: Record<string, any>;
+}
+const { messages } = Astro.props;
+const e = messages.etiquette;
+---
+
+<section id="etiquette" class="py-20 bg-ivoryDim text-ink">
+  <div class="max-w-7xl mx-auto px-5">
+    <p class="font-hand text-gold text-xl md:text-2xl">{e.label}</p>
+    <h2 class="font-display font-semibold text-3xl md:text-5xl text-teak mt-2">{e.heading}</h2>
+    <p class="mt-5 text-ink/80 max-w-3xl">{e.lead}</p>
+
+    <h3 class="font-display text-2xl text-teak mt-12 pb-3 border-b border-teak/20">{e.ecoTitle}</h3>
+    <div class="grid md:grid-cols-3 gap-5 mt-7">
+      {e.eco.map((item: any, i: number) => (
+        <article class="rounded-2xl bg-white/55 border border-gold/30 p-6">
+          <span class="font-display text-gold/70 text-sm">{String(i + 1).padStart(2, '0')}</span>
+          <h4 class="font-display text-lg text-teak mt-1">{item.title}</h4>
+          <p class="text-sm text-ink/80 mt-2 leading-relaxed">{item.text}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 mt-12">
+      <div class="rounded-2xl bg-teak text-ivory p-7">
+        <h3 class="font-display text-2xl text-goldBright flex items-center gap-3">
+          <span aria-hidden="true">✓</span>{e.doTitle}
+        </h3>
+        <ul class="mt-5 space-y-3 text-sm text-ivory/85">
+          {e.dos.map((item: string) => (
+            <li class="flex gap-3">
+              <span class="text-goldBright shrink-0 mt-0.5" aria-hidden="true">✓</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="rounded-2xl bg-burgundy text-ivory p-7">
+        <h3 class="font-display text-2xl text-goldBright flex items-center gap-3">
+          <span aria-hidden="true">✕</span>{e.dontTitle}
+        </h3>
+        <ul class="mt-5 space-y-3 text-sm text-ivory/85">
+          {e.donts.map((item: string) => (
+            <li class="flex gap-3">
+              <span class="text-goldBright shrink-0 mt-0.5" aria-hidden="true">✕</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

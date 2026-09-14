@@ -1,0 +1,26 @@
+{
+  // Cloudflare Workers configuration for the on-demand (SSR) build.
+  //
+  // `astro build` emits two things into `dist/`:
+  //   1. `dist/_worker.js/index.js` — the Worker entrypoint that renders the
+  //      market pages (and proxies `/api/weather`);
+  //   2. every prerendered page, gallery variant, icon, sitemap and robots file
+  //      as plain assets, which are served directly by the `ASSETS` binding so
+  //      static requests never wake the Worker.
+  //
+  // `name` intentionally matches `package.json.name`: it is the Worker that
+  // wrangler's Astro autoconfiguration creates for this project, so the custom
+  // domain keeps pointing at the same deployment.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "damnoen-saduak-floating-market",
+  "main": "dist/_worker.js/index.js",
+  "compatibility_date": "2026-09-11",
+  "compatibility_flags": ["global_fetch_strictly_public"],
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "dist"
+  }
+}

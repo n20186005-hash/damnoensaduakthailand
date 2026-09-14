@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Damnoen Saduak Floating Market — The Complete Visitor Guide",
-    "description": "Damnoen Saduak Floating Market, Ratchaburi — your complete guide: history, riverside food, visitor tips and real reviews. Experience the authentic waterway life of Siam."
+    "title": "Damnoen Saduak Floating Market Guide (2026) – Hours, Boat Price & Transport",
+    "description": "Planning your trip to Damnoen Saduak Floating Market in Ratchaburi? Check opening hours, boat tour options, map location, and transport from Bangkok."
   },
   "common": {
     "siteName": "Damnoen Saduak Floating Market",
@@ -17,7 +17,14 @@
     "food": "Food",
     "gallery": "Gallery",
     "reviews": "Reviews",
-    "map": "Map"
+    "map": "Map",
+    "stories": "Stories",
+    "seasons": "Seasons",
+    "routes": "Routes",
+    "weather": "Weather",
+    "facilities": "Facilities",
+    "etiquette": "Responsibility",
+    "sources": "Sources"
   },
   "hero": {
     "eyebrow": "— 01 · The Waterway Legend of Ratchaburi —",
@@ -27,7 +34,7 @@
     "cta1": "Start the journey",
     "cta2": "Taste the waterway →",
     "rating": "3.8",
-    "reviewCount": "34,449",
+    "reviewCount": "34,885",
     "liveWeather": "Live weather",
     "liveSunset": "Sunset",
     "loading": "Loading live data from the actual location…",
@@ -41,7 +48,15 @@
     "arriveLabel": "Suggested arrival time",
     "blueHourLabel": "Blue Hour",
     "lightCaption": "Soft light, perfect for photography",
-    "viewLocation": "View on Google Maps ↗"
+    "viewLocation": "View on Google Maps ↗",
+    "openMapsCta": "Open in Google Maps",
+    "quickFacts": {
+      "rating": "Rating",
+      "location": "Location",
+      "district": "Damnoen Saduak District, Ratchaburi",
+      "bestTime": "Best to visit",
+      "bestTimeValue": "07:00 AM – 11:00 AM (Early morning to avoid heat and crowds)"
+    }
   },
   "about": {
     "label": "— 02 · About the Market —",
@@ -121,6 +136,41 @@
         { "title": "Food & fruit", "desc": "From 20–50 THB" }
       ]
     },
+    "boatTypes": {
+      "tag": "02B",
+      "title": "Boat types & standard prices",
+      "subtitle": "Reference fares so you can compare at the pier and avoid overpaying",
+      "items": [
+        {
+          "name": "Hand-rowed paddle boat (เรือพาย)",
+          "capacity": "2–4 passengers / boat",
+          "price": "150–300 THB per boat per hour",
+          "bestFor": "Photography, slow canal experience, small groups",
+          "note": "Confirm the hourly rate and route length before boarding"
+        },
+        {
+          "name": "Long-tail motor boat (เรือหางยาว)",
+          "capacity": "6–10 passengers / boat",
+          "price": "300–600 THB per round-trip (about 45–60 min)",
+          "bestFor": "Larger families, short on time, reaching outer canal sections",
+          "note": "Ask whether the price includes stops at food / fruit boats"
+        },
+        {
+          "name": "Kayak / self-paddle",
+          "capacity": "1–2 persons",
+          "price": "150–250 THB per hour",
+          "bestFor": "Independent travellers, avoiding crowds",
+          "note": "Wear a life jacket and keep to the canal edges"
+        },
+        {
+          "name": "Shared boat (join-in)",
+          "capacity": "Seats filled with other travellers",
+          "price": "60–150 THB per person per round",
+          "bestFor": "Solo travellers, budget option",
+          "note": "Depart when the boat is full; wait times vary"
+        }
+      ]
+    },
       "transport": {
         "tag": "03",
         "title": "Getting there",
@@ -136,7 +186,15 @@
       { "q": "Which day is best to visit?", "a": "Weekdays are quieter than weekends, and pre-dawn gives the most authentic atmosphere." },
       { "q": "Do I need to book a boat in advance?", "a": "Mostly you can rent at the pier on the spot, but during festivals booking via your hotel or a tour is recommended." },
       { "q": "Is vegetarian or vegan food available?", "a": "Yes — many Thai-dessert and fruit boats, and some boats offer vegetarian options." },
-      { "q": "Can I get there by public transport?", "a": "Yes — van from Bangkok to Ratchaburi then a songthaew, or join a day tour." }
+      { "q": "Can I get there by public transport?", "a": "Yes — van from Bangkok to Ratchaburi then a songthaew, or join a day tour." },
+      { "q": "Should I bring cash?", "a": "Yes. Bring small notes, because many boats and stalls take cash only. Some vendors display QR payment codes, but the mobile signal can be unreliable." },
+      { "q": "How long does it take to get there from Bangkok?", "a": "Roughly 1.5 to 2 hours from central Bangkok depending on traffic. If you want to arrive before 07:00, leave before 06:00." },
+      { "q": "Are there toilets and parking?", "a": "Both are available around the main market entrance. Parking is charged per vehicle and toilets usually cost a small fee, so bring tissues." },
+      { "q": "What should I do if it rains?", "a": "Browse the covered land-side market, or wait for the shower to pass before taking a boat. In the rainy season, always carry a folding umbrella or rain jacket." },
+      { "q": "Can I visit with small children or older relatives?", "a": "Yes. Fit children with life jackets whenever they are on a boat, avoid the midday heat, and use the land-side walkways for older visitors as the surface is smoother." },
+      { "q": "What should I wear?", "a": "Light, breathable clothing such as cotton or linen, a wide-brimmed hat, sunscreen and shoes with good grip — the timber walkways get slippery after rain." },
+      { "q": "Is the market open every day, and when is it quietest?", "a": "It operates daily, roughly 07:00 to 17:00. The quietest times are weekday mornings after 10:00 and the late rainy season from September to October." },
+      { "q": "What boats should I choose? Paddle, long-tail or kayak?", "a": "For a quiet, photogenic experience pick a hand-rowed paddle boat (150–300 THB/hour). For a larger group or limited time choose a long-tail boat (300–600 THB/round). Independent travellers on budget can try a self-paddle kayak (150–250 THB/hour). Always confirm the rate and route before boarding." }
     ]
   },
   "food": {
@@ -197,7 +255,7 @@
       { "name": "Niran R.", "date": "Aug 2025", "rating": "4.0", "text": "The pomelo is absolutely delicious; I buy some to take home every time." }
     ],
     "viewLocation": "View location on Google Maps ↗",
-    "disclaimer": "Overall rating 3.8 from 34,449 reviewers on Google Maps"
+    "disclaimer": "Overall rating 3.8 from 34,885 reviewers on Google Maps"
   },
   "mapSection": {
     "label": "— 08 · Location & Getting There —",
@@ -223,13 +281,20 @@
     "navTitle": "Menu",
     "navItems": [
       { "label": "Home", "href": "#home" },
-      { "label": "About", "href": "#about" },
+      { "label": "About the market", "href": "#about" },
       { "label": "History", "href": "#history" },
-      { "label": "Guide", "href": "#guide" },
-      { "label": "Food", "href": "#food" },
+      { "label": "Stories & local lore", "href": "#stories" },
+      { "label": "Seasons & timing", "href": "#seasons" },
+      { "label": "Routes & itineraries", "href": "#routes" },
+      { "label": "Visitor guide", "href": "#guide" },
+      { "label": "Services & facilities", "href": "#facilities" },
+      { "label": "Riverside food", "href": "#food" },
+      { "label": "Weather", "href": "#weather" },
       { "label": "Gallery", "href": "#gallery" },
       { "label": "Reviews", "href": "#reviews" },
-      { "label": "Map", "href": "#map" }
+      { "label": "Visitor responsibility", "href": "#etiquette" },
+      { "label": "Map", "href": "#map" },
+      { "label": "Sources", "href": "#sources" }
     ],
     "noteTitle": "Note",
     "note": "Information may change; please verify the latest hours and fees before you travel.",
@@ -347,5 +412,445 @@
       "save": "Save preferences",
       "rejectAll": "Reject all"
     }
+  },
+  "consent": {
+    "text": "This website uses cookies to remember your language preference and to collect anonymous visitor statistics. You can choose whether to allow them.",
+    "accept": "Accept all",
+    "necessary": "Necessary only",
+    "settings": "Detailed settings",
+    "saved": "Your cookie settings have been saved."
+  },
+  "toc": {
+    "title": "On this page",
+    "hint": "Jump straight to the topic you need — everything is on this single page.",
+    "weatherNow": "Weather today"
+  },
+  "weather": {
+    "windScale": "Force",
+    "bestTitle": "Best window on the water today",
+    "bestAlt": "Alternative slot",
+    "bestNote": "Ranked from hourly rain chance and heat between 07:00 and 17:00.",
+    "bestClear": "Driest and coolest hours of the trading day — the canal is at its liveliest.",
+    "bestHeat": "Early hours are the coolest; shade gets scarce once the afternoon heat builds.",
+    "bestRain": "Rain is likelier elsewhere in the day — use this window for the boat ride.",
+    "bestNone": "Every window carries a real chance of rain; keep a covered riverside plan ready.",
+    "label": "— 11 · Weather & Seasons —",
+    "heading": "Today's weather and the days ahead",
+    "lead": "Temperature, humidity and rain chance for the market's exact location, so you know whether to pack an umbrella, a hat or a rain jacket before you set off.",
+    "currentTitle": "Right now",
+    "forecastTitle": "Next 7 days",
+    "feelsLike": "Feels like",
+    "humidity": "Humidity",
+    "wind": "Wind",
+    "precip": "Chance of rain",
+    "rain": "Rainfall",
+    "sunrise": "Sunrise",
+    "sunset": "Sunset",
+    "today": "Today",
+    "adviceTitle": "What it means for your visit",
+    "adviceDress": "What to wear",
+    "advicePlan": "How to plan the day",
+    "adviceGear": "What to bring",
+    "adviceEmpty": "No particular concerns today — good conditions for a normal canal trip.",
+    "riskTitle": "Take care",
+    "updated": "Updated",
+    "loading": "Loading weather…",
+    "error": "Live weather is unavailable at the moment. Check the sky or ask your hotel before heading out.",
+    "fallbackNote": "If the live update fails, this section keeps showing the last forecast loaded into the page.",
+    "tempMax": "High",
+    "tempMin": "Low",
+    "codes": {
+      "0": "Clear sky",
+      "1": "Mainly clear",
+      "2": "Partly cloudy",
+      "3": "Overcast",
+      "45": "Fog",
+      "48": "Freezing fog",
+      "51": "Light drizzle",
+      "53": "Drizzle",
+      "55": "Heavy drizzle",
+      "61": "Light rain",
+      "63": "Moderate rain",
+      "65": "Heavy rain",
+      "71": "Light snow",
+      "73": "Moderate snow",
+      "75": "Heavy snow",
+      "80": "Light showers",
+      "81": "Moderate showers",
+      "82": "Violent showers",
+      "95": "Thunderstorm",
+      "96": "Thunderstorm with hail",
+      "99": "Severe thunderstorm"
+    },
+    "advice": {
+      "dressStorm": "Heavy rain or strong wind — wear a waterproof outer layer and skip wide skirts or long umbrellas.",
+      "dressCold": "Unusually cold for the tropics — bring a warm jacket and a scarf.",
+      "planChance": "Rain is likely at some point — favour the covered parts of the market and keep the boat trip flexible.",
+      "planWind": "Breezy conditions — boat trips and open-air sections may be suspended, so go early or reshuffle the day.",
+      "planFog": "Dense fog — views along the canal are limited, so treat this as a market-and-food morning.",
+      "gearRaincoat": "Rain jacket (a long umbrella is awkward in wind)",
+      "gearLayer": "A light layer for the cool early morning",
+      "gearMask": "A mask if fog or haze bothers you",
+      "gearWind": "A hat that stays put — gusts lift loose clothing",
+      "alertTitle": "Weather warning",
+      "alertAdvice": "Adjust your plans, stay clear of low-lying and waterside areas, and keep checking the forecast.",
+      "dressHot": "Hot and humid — wear light cotton, bring a wide-brimmed hat and sip water throughout the boat ride.",
+      "dressWarm": "Warm and comfortable — a light shirt and sunscreen are enough for the whole day.",
+      "dressLayers": "Morning and midday temperatures differ noticeably, so keep a thin layer with you.",
+      "dressRain": "Rain is expected — wear a rain jacket or quick-drying fabrics and shoes that tolerate water.",
+      "planClear": "Clear skies — an excellent morning for a canal ride and backlit photographs.",
+      "planPartly": "Broken cloud gives soft light — ideal for canal-side photography and a relaxed market walk.",
+      "planRain": "Intermittent rain — go out early and keep a covered, riverside fallback plan for later.",
+      "planHeavy": "Heavy rain — postpone the boat ride or stay with the covered sections of the market.",
+      "planThunder": "Thunderstorms — pause outdoor boat trips and wait under shelter until they pass.",
+      "planHot": "Strong sun and heat — take the boat trip early and rest in the shade during the afternoon.",
+      "gearRain": "Umbrella or rain jacket",
+      "gearSun": "Hat, sunscreen and drinking water",
+      "gearWater": "Drinking water",
+      "gearUv": "High-SPF sunscreen",
+      "gearCash": "Small cash for riverside purchases",
+      "riskThunder": "Thunderstorms",
+      "riskHeavy": "Heavy rain",
+      "riskGale": "Strong winds",
+      "riskFog": "Dense fog",
+      "riskHeat": "Extreme heat"
+    }
+  },
+  "seasons": {
+    "label": "— 12 · Seasons & Timing —",
+    "heading": "Season-by-season visiting strategy",
+    "lead": "Weather, canal water levels and orchard harvests all shape what a visit feels like. This table summarises what to expect in each part of the year.",
+    "note": "Water levels and fruit harvests vary with each year's rainfall, so conditions may differ from these typical patterns.",
+    "headSeason": "Season",
+    "headMonths": "Months",
+    "headWeather": "Weather",
+    "headWater": "Canal & orchards",
+    "headCrowd": "Crowds",
+    "headTip": "Advice",
+    "levelBest": "Best",
+    "levelGood": "Good",
+    "levelFair": "Fair",
+    "levelPlan": "Plan ahead",
+    "items": [
+      {
+        "name": "Cool season (high season)",
+        "months": "Nov – Feb",
+        "weather": "Roughly 20–32°C, little rain and many clear mornings with a cool breeze.",
+        "water": "Canal water drops and clears; orchards deliver their main harvest of pomelo, rose apple and coconut.",
+        "crowd": "The busiest stretch of the year, especially long weekends and the New Year period.",
+        "tip": "Arrive before 07:00 to secure a boat and the best light, and book accommodation 2–4 weeks ahead.",
+        "level": "levelBest"
+      },
+      {
+        "name": "Hot season",
+        "months": "Mar – May",
+        "weather": "25–36°C with strong midday sun; rain returns late in the season and Songkran falls in April.",
+        "water": "Canal levels run low and orchard trees begin to flower, so fresh fruit is less abundant.",
+        "crowd": "Fewer visitors overall, except during Songkran when the area is exceptionally busy.",
+        "tip": "Start boating at 07:00, carry a hat and water, and avoid standing in direct sun between 12:00 and 14:00.",
+        "level": "levelFair"
+      },
+      {
+        "name": "Early rainy season",
+        "months": "Jun – Aug",
+        "weather": "Short showers, usually in the afternoon or evening, with sun and cloud alternating by day.",
+        "water": "Water levels rise and the orchards turn lush; coconut and tropical fruit are plentiful.",
+        "crowd": "Fairly quiet — a good window if you want canal photographs without crowds.",
+        "tip": "Pack a folding umbrella or rain jacket and move your boat trip to the morning to dodge afternoon rain.",
+        "level": "levelGood"
+      },
+      {
+        "name": "Late rainy season",
+        "months": "Sep – Oct",
+        "weather": "The wettest part of the year, with rain that can persist for several days and heavy cloud.",
+        "water": "Canal levels peak and some orchard land is temporarily flooded.",
+        "crowd": "Quietest period of the year, offering the most everyday atmosphere.",
+        "tip": "Check the daily forecast before travelling and allow extra time for the journey.",
+        "level": "levelPlan"
+      }
+    ]
+  },
+  "routes": {
+    "label": "— 13 · Routes & Itineraries —",
+    "heading": "Suggested routes and itineraries",
+    "lead": "Beyond the main canal there are orchard tracks and riverside communities you can walk. Pick a route that matches the time you have and who is travelling with you.",
+    "generalTitle": "Standard itineraries (half day / full day)",
+    "comboTitle": "Classic combined day trip",
+    "comboLead": "Maeklong Railway Market sits only ~20 minutes by road from Damnoen Saduak. For most first-time visitors, combining both is the single most popular and efficient day trip from Bangkok.",
+    "maeklong": {
+      "distance": "About 20 minutes by road",
+      "distanceTitle": "Maeklong Railway Market (ตลาดแม่กลอง)",
+      "about": "A covered market built right across a working railway track; when the train approaches, awnings and stalls are rolled back within seconds.",
+      "timingTag": "Train arrival times",
+      "timingTip": "Check the current timetable in advance — trains generally run every 1–2 hours during the day.",
+      "fullCombo": {
+        "title": "Damnoen Saduak + Maeklong combined",
+        "duration": "8–9 hours (full day)",
+        "for": "First-time Thailand travellers who want both iconic day-trip highlights in one ride.",
+        "focus": "Floating canals in early morning + railway umbrella market in the afternoon",
+        "steps": [
+          "06:00 Leave Bangkok to beat the southern highway traffic.",
+          "07:30 Reach Damnoen Saduak main pier; confirm your boat rate and cruise the busy market canals.",
+          "09:30 Step ashore for breakfast and pick up pomelo, coconut or souvenirs.",
+          "10:30 Drive to Maeklong Railway Market (~20 minutes if the route is clear).",
+          "11:00–12:30 Walk the Maeklong market lanes and time your visit for one of the scheduled train passes.",
+          "12:30–13:30 Lunch at a riverside or Maeklong local restaurant.",
+          "14:00 Optional: Ampawa floating market (if open / Friday–Sunday weekends) or head back to Bangkok.",
+          "16:30 Arrive back in Bangkok before the full evening rush."
+        ],
+        "tip": "Use a single private driver for the day so you are not stuck waiting for vans between the two markets."
+      }
+    },
+    "audienceTitle": "Itineraries by traveller type",
+    "audienceLead": "Three routes tuned to the pace and needs of different groups.",
+    "durationLabel": "Duration",
+    "forLabel": "Best for",
+    "focusLabel": "Focus",
+    "stepsLabel": "Step by step",
+    "tipLabel": "Practical tip",
+    "halfDay": {
+      "title": "Morning half day",
+      "duration": "About 4 hours",
+      "for": "Travellers passing through or with limited time in Ratchaburi.",
+      "focus": "The atmosphere of the main canal and riverside food",
+      "steps": [
+        "06:30 Leave Bangkok or your Ratchaburi hotel to arrive ahead of the first tour groups.",
+        "07:00 Reach the main pier, agree the price and route before boarding.",
+        "07:15–08:30 Cruise the market at its liveliest, with trading on boats along both banks.",
+        "08:30–09:30 Step ashore at the main market for boat noodles and Thai snacks.",
+        "09:30–10:00 Browse the riverside shops and buy pomelo or local fruit to take home."
+      ],
+      "tip": "If your time is very tight, concentrate on 07:00–08:30, when the market is at its busiest."
+    },
+    "fullDay": {
+      "title": "Full day",
+      "duration": "About 7–8 hours",
+      "for": "Visitors who want the market, the orchards and riverside village life together.",
+      "focus": "Floating market + orchards + canal-side daily life",
+      "steps": [
+        "06:30–09:30 Cruise the floating market and explore the main market on the half-day morning route.",
+        "09:30–11:00 Continue by boat or car to surrounding orchards such as coconut or pomelo farms.",
+        "11:00–12:30 Have lunch at a riverside restaurant in one of the nearby communities.",
+        "12:30–14:30 Cycle or walk the canal lanes past orchards and wooden houses.",
+        "14:30–16:00 Visit a waterside temple or local architecture and prepare to head back.",
+        "16:30 Return to Bangkok before the evening traffic builds."
+      ],
+      "tip": "Arrange a car and driver for the day — there is no regular public transport between the outlying orchards."
+    },
+    "audiences": [
+      {
+        "tag": "01",
+        "icon": "👨‍👩‍👧",
+        "title": "Families with young children",
+        "duration": "About 3 hours",
+        "focus": "Safety, an unhurried pace and frequent rest stops",
+        "steps": [
+          "Start at the main pier and fit children's life jackets before anyone boards.",
+          "Take a short 30–45 minute canal loop during the morning while the sun is still gentle.",
+          "Go ashore to a shaded riverside area for snacks and a toilet stop.",
+          "Wander the souvenir and Thai-snack stalls with no fixed schedule.",
+          "Finish with ice cream or a cold drink before heading back."
+        ],
+        "tip": "Avoid 12:00–14:00 when the sun is strongest, and carry water and hats for the children."
+      },
+      {
+        "tag": "02",
+        "icon": "📷",
+        "title": "Photographers & nature lovers",
+        "duration": "About 4–5 hours",
+        "focus": "Morning light, the work of the vendors and the orchards",
+        "steps": [
+          "Arrive before sunrise to catch soft light and light mist over the water.",
+          "Shoot from the bank before boarding — the riverside angle frames the market better.",
+          "Take a boat into the narrower side canals for wooden houses and everyday life.",
+          "Return to the land market between 09:00 and 10:00 for close-range trading scenes.",
+          "Finish at the outlying orchards for natural detail and irrigation channels."
+        ],
+        "tip": "Ask before taking close-up portraits of vendors, and never block the boat traffic lanes."
+      },
+      {
+        "tag": "03",
+        "icon": "♿",
+        "title": "Older visitors & wheelchair users",
+        "duration": "About 2–3 hours",
+        "focus": "Short, level routes with frequent seating and nearby facilities",
+        "steps": [
+          "Begin on the land-side market, where the walkways are smoother than the piers.",
+          "Choose a short 20–30 minute boat ride along a wide, quieter stretch of canal.",
+          "Rest at a riverside shop near the main entrance, where there is shade and seating.",
+          "Browse only the front row of stalls, where the aisle is widest and seating appears regularly.",
+          "Return to the car park by the same route to avoid steps and wooden bridges."
+        ],
+        "tip": "Riverside walkways are timber and become slippery in rain; bring a companion and wear shoes with good grip."
+      }
+    ]
+  },
+  "facilities": {
+    "label": "— 14 · Visitor Services & Facilities —",
+    "heading": "Visitor services around the market",
+    "lead": "An overview of the types of services found around the floating market and the surrounding community, provided purely to help you plan.",
+    "neutral": "This list describes categories of service only. No business is endorsed or advertised. Always check prices, opening hours and conditions yourself before using a service.",
+    "items": [
+      {
+        "icon": "🚻",
+        "title": "Public toilets",
+        "desc": "Toilets are located near the main market entrance and the boat piers. There is usually a small charge and some facilities do not supply paper.",
+        "hint": "Bring tissues"
+      },
+      {
+        "icon": "🅿️",
+        "title": "Parking",
+        "desc": "Several private car parks sit around the market entrances and charge per vehicle. Note the name or position of your car park so you can find it again.",
+        "hint": "Fills early on holidays"
+      },
+      {
+        "icon": "🍜",
+        "title": "Restaurants & snacks",
+        "desc": "Beyond food sold from boats, there are riverside restaurants and drink stalls, both indoors and open-air along the canal.",
+        "hint": "Vegetarian options exist"
+      },
+      {
+        "icon": "🏨",
+        "title": "Accommodation",
+        "desc": "Places to stay range from small hotels and resorts in Damnoen Saduak district to homestays along the canal and lodging in nearby districts.",
+        "hint": "Book ahead in high season"
+      },
+      {
+        "icon": "🛒",
+        "title": "Convenience stores & supermarkets",
+        "desc": "Convenience stores and local shops line the main roads before the market — useful for water and essentials at normal prices.",
+        "hint": "Cheaper than in-market"
+      },
+      {
+        "icon": "⛽",
+        "title": "Fuel stations & EV charging",
+        "desc": "Service stations are found along Highway 325 and the main approach roads, and some now offer electric vehicle charging points.",
+        "hint": "Refuel before the market"
+      },
+      {
+        "icon": "💊",
+        "title": "Pharmacies & medical care",
+        "desc": "Pharmacies operate in the district centre and a community hospital is within a short drive of the market.",
+        "hint": "Carry your own medication"
+      },
+      {
+        "icon": "🏧",
+        "title": "ATMs & payment",
+        "desc": "ATMs are available along the main roads, but many market stalls still take cash only and mobile payment signals can be unreliable.",
+        "hint": "Carry small notes"
+      },
+      {
+        "icon": "♿",
+        "title": "Wheelchair access",
+        "desc": "Land-side market walkways are smoother than the pier area, but some boat ramps and wooden bridges have steps. Ask locally about the most suitable route before entering.",
+        "hint": "Bring a companion"
+      },
+      {
+        "icon": "🧳",
+        "title": "Left luggage & tourist services",
+        "desc": "Some market areas have left-luggage points and tourist service counters, which help if you are travelling onward after your visit.",
+        "hint": "Check closing times"
+      }
+    ]
+  },
+  "stories": {
+    "label": "— 15 · Stories & Local Lore —",
+    "heading": "Tales from the Damnoen Saduak waterway",
+    "lead": "Beyond the documented history, stories have been passed down by the people who live along the canal. Each entry below is labelled so you can tell recorded history apart from local legend.",
+    "kinds": {
+      "history": "Recorded history",
+      "legend": "Local legend",
+      "custom": "Custom & daily life"
+    },
+    "items": [
+      {
+        "kind": "history",
+        "title": "A canal dug by hand in two years",
+        "text": "The Damnoen Saduak canal was excavated between 1866 and 1868 during the reign of King Mongkut (Rama IV). It took roughly two years using human labour and simple tools rather than heavy machinery, which is why it ranks among the largest irrigation works undertaken in Siam at the time."
+      },
+      {
+        "kind": "history",
+        "title": "A name that means 'travelling with ease'",
+        "text": "The name Damnoen Saduak expresses the purpose of the canal directly: to make movement between the two river systems shorter and easier. Before it existed, journeys had to detour around the river mouths and could take several days. The canal cut the route down to roughly 32 kilometres."
+      },
+      {
+        "kind": "history",
+        "title": "The canal that created an orchard province",
+        "text": "Once the canal opened, smaller channels were dug off it to carry water into farmland. Growers planted coconut, pomelo, rose apple and banana in earnest, and Ratchaburi became one of central Thailand's key fruit regions. The floating market itself grew out of the produce of those orchards."
+      },
+      {
+        "kind": "history",
+        "title": "From village market to a national image",
+        "text": "This canal-side market began as a trading point for local residents. As Thai tourism expanded during the twentieth century, the sight of a paddle boat and a palm-leaf hat became one of the most widely recognised images of the country — and the community adapted to serve visitors from around the world."
+      },
+      {
+        "kind": "legend",
+        "title": "The first pomelo of the day",
+        "text": "Locals along the canal say that pomelo sold from the first boat of the day brings good fortune to both seller and buyer. Whoever tastes fruit from a boat that sells out before any other is said to enjoy luck for the rest of the year — which is why some visitors arrive early to be the first customer."
+      },
+      {
+        "kind": "legend",
+        "title": "The last boat at sunset",
+        "text": "Another story holds that the final paddle boat returning to the pier closes the canal for the day. Anyone standing on the bank who watches it drift past without calling it over, the story goes, will travel safely for the whole of that journey."
+      },
+      {
+        "kind": "custom",
+        "title": "Bargaining, politely",
+        "text": "Haggling over boat fares and souvenirs is a normal local practice. The usual approach is to open slightly below the asking price and settle gradually with a polite manner and a smile. Agreeing the fare before boarding keeps expectations clear on both sides."
+      },
+      {
+        "kind": "custom",
+        "title": "The palm hat and checkered cloth",
+        "text": "The woven palm-leaf hat and the brightly checkered pha khao ma are the working uniform of riverside traders. The hat blocks the sun beautifully, while the cloth serves as a towel, a sun shield and a boat cushion. This is not costume for visitors but practical design refined over centuries of use."
+      }
+    ]
+  },
+  "etiquette": {
+    "label": "— 16 · Understanding & Responsibility —",
+    "heading": "Travel with understanding and help protect the waterway",
+    "lead": "The Damnoen Saduak canal is not only a tourism backdrop — it is an ecosystem and the home of thousands of households. A few basic practices make a visit better for everyone.",
+    "ecoTitle": "The canal ecosystem",
+    "eco": [
+      {
+        "title": "The water",
+        "text": "The canal links the Mae Klong and Tha Chin river systems, so water quality and level shift with the rainy season, drainage from surrounding farmland and conditions in the main rivers. In the rainy season the water runs higher and murkier, while late in the cool season it is often clearer and slower."
+      },
+      {
+        "title": "Wildlife in and around the water",
+        "text": "The canal and its side channels support many freshwater fish as well as frogs, snails and crabs. Water birds such as herons and kingfishers are common along the banks, and the area's most frequently seen large reptile is the water monitor, which often forages close to the water's edge."
+      },
+      {
+        "title": "Plants and water weeds",
+        "text": "The plants drifting across the canal are water hyacinth, a fast-spreading introduced species that can block boat traffic and is therefore cleared regularly. Bank-side vegetation such as nipa palm, coconut and banana provides both shade and everyday materials for local households."
+      }
+    ],
+    "doTitle": "Please do",
+    "dos": [
+      "Buy food and fruit directly from the boats so income reaches local vendors.",
+      "Ask before taking close-up photographs, especially of vendors at work, and thank them with a smile.",
+      "Wear the life jacket provided on boats and sit balanced as the boat operator directs.",
+      "Agree the boat fare clearly before boarding to avoid misunderstandings en route.",
+      "Take your rubbish with you or use the bins the market provides.",
+      "Confirm opening hours at the pier directly, particularly around festivals and long weekends."
+    ],
+    "dontTitle": "Please avoid",
+    "donts": [
+      "Do not feed animals in the canal — it changes their behaviour and disturbs the ecosystem.",
+      "Do not throw food scraps, plastic bags or straws into the water.",
+      "Do not play loud music or make noise where residents travel and rest.",
+      "Do not swim in the canal; boat traffic is constant and currents are unpredictable.",
+      "Do not stand up or move around while a boat is moving, especially in small boats.",
+      "Do not buy wildlife products or animal parts, however they are offered."
+    ]
+  },
+  "sources": {
+    "label": "— 17 · Sources —",
+    "heading": "Sources and verification",
+    "lead": "The facts, coordinates, opening hours and historical detail on this page are compiled from the public references listed below so that readers can check them further.",
+    "updated": "Last content update",
+    "verifyTitle": "Before you travel",
+    "verifyNote": "Opening hours, fees and routes can change. Please confirm with the service provider or local authority before setting out.",
+    "photoCredit": "All photographs on this website remain the property of their original photographers and are used under the licences stated.",
+    "editorial": "This site is produced by an independent, non-commercial editorial team. It is not affiliated with any government body or commercial operator."
   }
 }

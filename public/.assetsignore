@@ -1,0 +1,9 @@
+# Files that live in `dist/` but must never be served as public assets.
+#
+# `astro build` with the Cloudflare adapter emits the Pages-style
+# `dist/_worker.js/` bundle and `dist/_routes.json`. The Worker entrypoint is
+# referenced through `main` in `wrangler.jsonc`; uploading it as an asset would
+# expose the server-side bundle to the public Internet, so wrangler refuses the
+# deploy unless it is listed here.
+_worker.js
+_routes.json

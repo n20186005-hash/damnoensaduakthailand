@@ -1,0 +1,40 @@
+---
+interface Props {
+  messages: Record<string, any>;
+}
+const { messages } = Astro.props;
+const s = messages.stories;
+
+const kindStyle: Record<string, string> = {
+  history: 'border-gold/50 text-teak bg-gold/15',
+  legend: 'border-burgundy/40 text-burgundy bg-burgundy/10',
+  custom: 'border-teak/30 text-teak/80 bg-teak/10',
+};
+---
+
+<section id="stories" class="py-20 bg-ivory text-ink">
+  <div class="max-w-7xl mx-auto px-5">
+    <p class="font-hand text-gold text-xl md:text-2xl">{s.label}</p>
+    <h2 class="font-display font-semibold text-3xl md:text-5xl text-teak mt-2">{s.heading}</h2>
+    <p class="mt-5 text-ink/80 max-w-3xl">{s.lead}</p>
+
+    <div class="mt-10 grid md:grid-cols-2 gap-6">
+      {s.items.map((item: any, i: number) => (
+        <article class="rounded-2xl border border-gold/30 bg-white/45 p-6 flex gap-5">
+          <span class="font-display text-2xl text-gold/70 shrink-0 mt-0.5">
+            {String(i + 1).padStart(2, '0')}
+          </span>
+          <div>
+            <span
+              class={`inline-block rounded-full border px-3 py-0.5 text-[0.7rem] tracking-wide ${kindStyle[item.kind] ?? kindStyle.history}`}
+            >
+              {s.kinds[item.kind]}
+            </span>
+            <h3 class="font-display text-xl text-teak mt-3">{item.title}</h3>
+            <p class="text-sm text-ink/80 mt-2 leading-relaxed">{item.text}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

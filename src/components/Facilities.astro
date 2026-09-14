@@ -1,0 +1,32 @@
+---
+interface Props {
+  messages: Record<string, any>;
+}
+const { messages } = Astro.props;
+const f = messages.facilities;
+---
+
+<section id="facilities" class="py-20 bg-teakDeep text-ivory">
+  <div class="max-w-7xl mx-auto px-5">
+    <p class="font-hand text-goldBright text-xl md:text-2xl">{f.label}</p>
+    <h2 class="font-display font-semibold text-3xl md:text-5xl mt-2">{f.heading}</h2>
+    <p class="mt-5 text-ivory/80 max-w-3xl">{f.lead}</p>
+
+    <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+      {f.items.map((item: any) => (
+        <article class="rounded-2xl border border-gold/25 bg-white/[0.04] p-5 flex flex-col transition-colors hover:border-gold/60 hover:bg-white/[0.08]">
+          <span class="text-2xl" aria-hidden="true">{item.icon}</span>
+          <h3 class="font-display text-lg text-goldBright mt-3 leading-snug">{item.title}</h3>
+          <p class="text-sm text-ivory/75 mt-2 leading-relaxed grow">{item.desc}</p>
+          <span class="mt-4 self-start rounded-full border border-gold/40 px-3 py-0.5 text-[0.7rem] tracking-wide text-gold">
+            {item.hint}
+          </span>
+        </article>
+      ))}
+    </div>
+
+    <p class="mt-8 max-w-4xl rounded-xl border border-gold/25 bg-gold/[0.07] px-5 py-4 text-sm text-ivory/70">
+      {f.neutral}
+    </p>
+  </div>
+</section>

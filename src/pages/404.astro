@@ -1,0 +1,42 @@
+---
+import { siteConfig } from '../config';
+import { languagesList } from '../i18n/ui';
+
+// Static: served for unknown paths (including unsupported locales).
+export const prerender = true;
+
+const heading = { th: 'ไม่พบหน้านี้', en: 'Page not found', zh: '页面不存在' };
+const body = {
+  th: 'ลิงก์อาจถูกเปลี่ยนหรือพิมพ์ผิด กรุณาเลือกภาษาเพื่อกลับสู่หน้าหลัก',
+  en: 'This link may have changed or been mistyped. Pick a language to return to the guide.',
+  zh: '该链接可能已变更或输入有误，请选择语言返回首页。',
+};
+---
+
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 — {siteConfig.name.en}</title>
+    <meta name="robots" content="noindex,follow" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body style="margin:0;min-height:100vh;display:grid;place-items:center;background:#12333d;color:#f6efe2;font-family:system-ui,sans-serif">
+    <main style="max-width:34rem;padding:2.5rem;text-align:center">
+      <p style="letter-spacing:.3em;text-transform:uppercase;color:#d9b16a;font-size:.75rem;margin:0 0 .75rem">
+        404
+      </p>
+      <h1 style="font-size:1.75rem;margin:0 0 .75rem">{siteConfig.name.en}</h1>
+      {languagesList.map((locale: 'th' | 'en' | 'zh') => (
+        <section style="margin:1.25rem 0">
+          <h2 style="font-size:1.1rem;margin:0 0 .35rem">{heading[locale]}</h2>
+          <p style="margin:0 0 .6rem;color:rgba(246,239,226,.75);font-size:.95rem">{body[locale]}</p>
+          <a href={`/${locale}/`} style="color:#d9b16a;text-decoration:none;font-weight:600">
+            {siteConfig.name[locale]} →
+          </a>
+        </section>
+      ))}
+    </main>
+  </body>
+</html>

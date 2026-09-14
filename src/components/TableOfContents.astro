@@ -1,0 +1,33 @@
+---
+interface Props {
+  messages: Record<string, any>;
+}
+const { messages } = Astro.props;
+const toc = messages.toc;
+const items = messages.footer.navItems.filter((n: any) => n.href !== '#home');
+---
+
+<section id="toc" class="bg-teakDeep text-ivory py-10 border-y border-gold/20">
+  <div class="max-w-7xl mx-auto px-5">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+      <h2 class="font-display text-2xl md:text-3xl text-goldBright">{toc.title}</h2>
+      <p class="text-sm text-ivory/60 max-w-xl md:text-right">{toc.hint}</p>
+    </div>
+
+    <ul class="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2 text-sm">
+      {items.map((item: any, i: number) => (
+        <li>
+          <a
+            href={item.href}
+            class="flex items-center gap-2 rounded-lg border border-gold/20 bg-white/[0.03] px-3 py-2 transition-colors hover:border-gold/60 hover:bg-white/[0.08]"
+          >
+            <span class="font-display text-gold/80 text-xs shrink-0">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <span class="text-ivory/85 leading-snug">{item.label}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

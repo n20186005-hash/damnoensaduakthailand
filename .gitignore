@@ -7,6 +7,10 @@ node_modules/
 # astro cache
 .astro/
 
+# wrangler local state
+.wrangler/
+.wrangler-dry/
+
 # logs
 *.log
 npm-debug.log*

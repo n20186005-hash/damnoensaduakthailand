@@ -39,16 +39,48 @@ const coordsLabel = siteConfig.coords.label[lang];
         </a>
       </div>
 
-      <div class="mt-8 flex flex-wrap items-center gap-5 text-sm text-ivory/80">
-        <span class="stars text-lg">★ {hero.rating}</span>
-        <span>{hero.reviewCount} Google</span>
-        <span class="hidden sm:inline text-ivory/40">·</span>
-        <span>{coordsLabel}</span>
-      </div>
+      <!-- Quick Facts Banner (mobile-first) -->
+      <div class="mt-8 rounded-2xl border border-gold/35 bg-teakDeep/60 backdrop-blur-md p-4 md:p-5 shadow-xl">
+        <div class="grid gap-3 text-sm md:text-base text-ivory/90">
+          <div class="flex items-start gap-3">
+            <span class="shrink-0 w-24 md:w-28 font-medium text-goldBright">{hero.quickFacts.rating}</span>
+            <span class="stars">★ {hero.rating} / 5.0</span>
+            <span class="text-ivory/55 hidden sm:inline">· {hero.reviewCount}+ Google</span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="shrink-0 w-24 md:w-28 font-medium text-goldBright">{hero.quickFacts.location}</span>
+            <span>
+              {hero.quickFacts.district}
+              <span class="text-ivory/60"> · Plus Code: GXC5+3C</span>
+            </span>
+          </div>
+          <div class="flex items-start gap-3">
+            <span class="shrink-0 w-24 md:w-28 font-medium text-goldBright">{hero.quickFacts.bestTime}</span>
+            <span>{hero.quickFacts.bestTimeValue}</span>
+          </div>
+        </div>
 
-      <a href={mapsUrl} target="_blank" rel="noopener" class="mt-5 inline-flex items-center gap-2 text-goldBright hover:text-gold underline-offset-4 hover:underline text-sm">
-        {hero.viewLocation}
-      </a>
+        <a
+          href={mapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-4 w-full inline-flex items-center justify-center gap-2 bg-gold hover:bg-goldBright text-teak font-semibold px-5 py-3 rounded-full transition-colors"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          {hero.openMapsCta}
+        </a>
+
+        <div class="mt-3 flex flex-wrap items-center gap-4 text-xs text-ivory/70">
+          <span class="stars text-lg">★ {hero.rating}</span>
+          <span>{hero.reviewCount} Google</span>
+          <span class="hidden sm:inline text-ivory/40">·</span>
+          <span>{coordsLabel}</span>
+        </div>
+
+        <a href={mapsUrl} target="_blank" rel="noopener" class="mt-2 inline-flex items-center gap-2 text-goldBright/85 hover:text-gold underline-offset-4 hover:underline text-xs">
+          {hero.viewLocation}
+        </a>
+      </div>
     </div>
 
     <!-- live weather + sunset planner -->
@@ -86,7 +118,7 @@ const coordsLabel = siteConfig.coords.label[lang];
 <script is:inline define:vars={{ lang, weatherError: hero.weatherError }}>
   (function () {
     // Damnoen Saduak Floating Market — real coordinates
-    const LAT = 13.519, LON = 99.953;
+    const LAT = 13.51787, LON = 99.96024;
     const LANG = lang;
 
     function weatherText(code, mode) {

@@ -7,66 +7,121 @@ interface Props {
   lang: Lang;
   title: string;
   description: string;
+  noindex?: boolean;
+  faqList?: Array<{ q: string; a: string }>;
 }
-const { lang, title, description } = Astro.props;
-const canonical = `${siteConfig.domain}/${lang}/`;
+const { lang, title, description, noindex = false, faqList = [] } = Astro.props;
 
-const jsonLd = [
+const rawPath = Astro.url.pathname;
+const normalizedPath = rawPath.endsWith('/') ? rawPath : rawPath + '/';
+const canonical = `${siteConfig.domain}${normalizedPath}`;
+
+const buildAlternateUrl = (targetLang: Lang) => {
+  const parts = normalizedPath.split('/').filter(Boolean);
+  if (parts.length > 0 && (languagesList as readonly string[]).includes(parts[0])) {
+    parts[0] = targetLang;
+  }
+  const path = parts.join('/');
+  return `${siteConfig.domain}/${path}${path ? '/' : ''}`;
+};
+
+const touristAttractionLd = {
+  '@context': 'https://schema.org',
+  '@type': ['TouristAttraction', 'Market'],
+  name: siteConfig.name[lang],
+  alternateName: lang === 'th'
+    ? siteConfig.name.en
+    : lang === 'zh'
+    ? siteConfig.name.en
+    : siteConfig.name.th,
+  description,
+  image: `${siteConfig.domain}/gallery/damnoen-saduak-floating-market-1.jpg`,
+  url: canonical,
+  telephone: siteConfig.phone,
+  priceRange: '$$',
+  additionalType: siteConfig.category[lang],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: siteConfig.postalAddress.streetAddress[lang],
+    addressLocality: siteConfig.postalAddress.addressLocality[lang],
+    addressRegion: siteConfig.postalAddress.addressRegion[lang],
+    postalCode: siteConfig.postalAddress.postalCode,
+    addressCountry: siteConfig.postalAddress.addressCountry,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: siteConfig.coords.lat,
+    longitude: siteConfig.coords.lng,
+  },
+  hasMap: siteConfig.mapsUrl,
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: siteConfig.rating,
+    ratingCount: siteConfig.reviewCount.replace(/,/g, ''),
+    reviewCount: siteConfig.reviewCount.replace(/,/g, ''),
+    bestRating: '5',
+    worstRating: '1',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '07:00',
+      closes: '17:00',
+    },
+  ],
+  additionalProperty: [
+    {
+      '@type': 'PropertyValue',
+      name: 'Plus Code',
+      value: siteConfig.plusCode,
+    },
+    {
+      '@type': 'PropertyValue',
+      name: 'Province',
+      value: siteConfig.province[lang],
+    },
+  ],
+  sameAs: siteConfig.sameAs,
+};
+
+const defaultFaqs = [
   {
-    '@context': 'https://schema.org',
-    '@type': 'TouristAttraction',
-    name: siteConfig.name[lang],
-    description,
-    image: `${siteConfig.domain}/gallery/damnoen-saduak-floating-market-1.jpg`,
-    url: canonical,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: siteConfig.address[lang],
-      addressCountry: 'TH',
-    },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: siteConfig.coords.lat,
-      longitude: siteConfig.coords.lng,
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: siteConfig.rating,
-      reviewCount: siteConfig.reviewCount.replace(/,/g, ''),
-    },
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-        opens: '07:00',
-        closes: '17:00',
-      },
-    ],
-    sameAs: siteConfig.sameAs,
+    '@type': 'Question' as const,
+    name: '哪天去最好？ / Best day to visit?',
+    acceptedAnswer: {
+      '@type': 'Answer' as const,
+      text: '工作日比周末人少，破晓时分最能感受原汁原味的氛围。/ Weekdays are less crowded. Early morning offers the most authentic experience.'
+    }
   },
   {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: '哪天去最好？ / Best day to visit?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: '工作日比周末人少，破晓时分最能感受原汁原味的氛围。/ Weekdays are less crowded. Early morning offers the most authentic experience.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: '需要提前订船吗？ / Need to book a boat in advance?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: '多数可在码头现场租到，但节假日建议预订。/ Mostly available on-site, but booking is recommended on holidays.'
-        }
-      }
-    ]
+    '@type': 'Question' as const,
+    name: '需要提前订船吗？ / Need to book a boat in advance?',
+    acceptedAnswer: {
+      '@type': 'Answer' as const,
+      text: '多数可在码头现场租到，但节假日建议预订。/ Mostly available on-site, but booking is recommended on holidays.'
+    }
   }
 ];
+
+const faqMainEntity = faqList.length > 0
+  ? faqList.map((f) => ({
+      '@type': 'Question' as const,
+      name: f.q,
+      acceptedAnswer: {
+        '@type': 'Answer' as const,
+        text: f.a,
+      },
+    }))
+  : defaultFaqs;
+
+const faqPageLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqMainEntity,
+};
+
+const jsonLd = noindex ? [] : [touristAttractionLd, faqPageLd];
 ---
 
 <!doctype html>
@@ -77,6 +132,7 @@ const jsonLd = [
     <link rel="icon" type="image/jpeg" href={`/gallery/damnoen-saduak-floating-market-1.jpg`} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content={htmlLang[lang]} />
@@ -86,9 +142,9 @@ const jsonLd = [
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary_large_image" />
     {languagesList.map((l) => (
-      <link rel="alternate" hreflang={htmlLang[l]} href={`${siteConfig.domain}/${l}/`} />
+      <link rel="alternate" hreflang={htmlLang[l]} href={buildAlternateUrl(l)} />
     ))}
-    <link rel="alternate" hreflang="x-default" href={`${siteConfig.domain}/th/`} />
+    <link rel="alternate" hreflang="x-default" href={buildAlternateUrl('en')} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -102,9 +158,11 @@ const jsonLd = [
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HXM22WWPKP"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-HXM22WWPKP');
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
+      window.gtag('js', new Date());
+      window.gtag('config', 'G-HXM22WWPKP');
     </script>
   </head>
   <body class="grain">

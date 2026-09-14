@@ -1,0 +1,93 @@
+---
+interface Props {
+  lang: 'th' | 'en' | 'zh';
+  messages: Record<string, any>;
+}
+const { lang, messages } = Astro.props;
+const c = messages.consent;
+---
+
+<div
+  id="cookie-banner"
+  class="hidden fixed bottom-4 inset-x-4 md:inset-x-auto md:right-6 md:bottom-6 md:max-w-md z-[70] rounded-2xl border border-gold/40 bg-teakDeep/97 backdrop-blur px-5 py-4 text-ivory shadow-2xl"
+  role="dialog"
+  aria-live="polite"
+>
+  <p class="text-sm text-ivory/85">{c.text}</p>
+  <div class="mt-4 flex flex-wrap gap-2 text-sm">
+    <button
+      type="button"
+      data-consent="all"
+      class="rounded-full bg-gold text-teak font-semibold px-4 py-1.5 transition-colors hover:bg-goldBright"
+    >
+      {c.accept}
+    </button>
+    <button
+      type="button"
+      data-consent="necessary"
+      class="rounded-full border border-ivory/30 px-4 py-1.5 text-ivory/85 transition-colors hover:border-gold hover:text-goldBright"
+    >
+      {c.necessary}
+    </button>
+    <a
+      href={`/${lang}/cookie-settings`}
+      class="rounded-full px-4 py-1.5 text-ivory/60 underline-offset-4 hover:text-goldBright hover:underline"
+    >
+      {c.settings}
+    </a>
+  </div>
+</div>
+
+<script>
+  const KEY = 'damnoen-cookie-prefs';
+  const banner = document.getElementById('cookie-banner');
+
+  const read = () => {
+    try {
+      return JSON.parse(localStorage.getItem(KEY) || 'null');
+    } catch {
+      return null;
+    }
+  };
+
+  const loadAnalytics = () => {
+    const id = 'G-HXM22WWPKP';
+    if (document.getElementById('ga4-script')) return;
+    const s = document.createElement('script');
+    s.id = 'ga4-script';
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+    document.head.appendChild(s);
+    const w = window as any;
+    w.dataLayer = w.dataLayer || [];
+    w.gtag =
+      w.gtag ||
+      function (...args: any[]) {
+        w.dataLayer.push(args);
+      };
+    w.gtag('js', new Date());
+    w.gtag('config', id, { anonymize_ip: true });
+  };
+
+  const save = (analytics: boolean) => {
+    try {
+      localStorage.setItem(KEY, JSON.stringify({ analytics, at: Date.now() }));
+    } catch {
+      /* storage unavailable */
+    }
+    banner?.classList.add('hidden');
+    if (analytics) loadAnalytics();
+    window.dispatchEvent(new Event('damnoen:consent'));
+  };
+
+  if (!read()) banner?.classList.remove('hidden');
+
+  banner?.querySelectorAll<HTMLButtonElement>('[data-consent]').forEach((btn) => {
+    btn.addEventListener('click', () => save(btn.dataset.consent === 'all'));
+  });
+
+  window.addEventListener('damnoen:consent', () => {
+    const prefs = read();
+    if (prefs?.analytics) loadAnalytics();
+  });
+</script>

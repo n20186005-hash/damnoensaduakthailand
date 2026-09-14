@@ -1,0 +1,56 @@
+---
+import { siteConfig } from '../config';
+
+interface Props {
+  lang: 'th' | 'en' | 'zh';
+  messages: Record<string, any>;
+}
+const { lang, messages } = Astro.props;
+const s = messages.sources;
+
+const updated = new Intl.DateTimeFormat(
+  lang === 'th' ? 'th-TH' : lang === 'zh' ? 'zh-CN' : 'en-GB',
+  { year: 'numeric', month: 'long', day: 'numeric' }
+).format(new Date(siteConfig.lastUpdated));
+---
+
+<section id="sources" class="py-20 bg-ink text-ivory">
+  <div class="max-w-7xl mx-auto px-5">
+    <p class="font-hand text-goldBright text-xl md:text-2xl">{s.label}</p>
+    <h2 class="font-display font-semibold text-3xl md:text-5xl mt-2">{s.heading}</h2>
+    <p class="mt-5 text-ivory/75 max-w-3xl">{s.lead}</p>
+
+    <div class="grid lg:grid-cols-12 gap-10 mt-10">
+      <ul class="lg:col-span-7 space-y-3">
+        {siteConfig.sources.map((src: any) => (
+          <li>
+            <a
+              href={src.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-start gap-3 rounded-xl border border-gold/20 bg-white/[0.03] px-4 py-3 text-sm transition-colors hover:border-gold/60 hover:bg-white/[0.07]"
+            >
+              <span class="text-gold shrink-0" aria-hidden="true">↗</span>
+              <span class="text-ivory/85">{src.name[lang]}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="lg:col-span-5 space-y-5">
+        <div class="rounded-2xl border border-gold/25 bg-white/[0.04] p-6">
+          <div class="text-xs uppercase tracking-wider text-gold">{s.updated}</div>
+          <div class="font-display text-2xl text-goldBright mt-2">{updated}</div>
+        </div>
+
+        <div class="rounded-2xl border border-gold/25 bg-white/[0.04] p-6">
+          <div class="text-xs uppercase tracking-wider text-gold">{s.verifyTitle}</div>
+          <p class="text-sm text-ivory/75 mt-2">{s.verifyNote}</p>
+        </div>
+
+        <p class="text-xs text-ivory/55 leading-relaxed">{s.photoCredit}</p>
+        <p class="text-xs text-ivory/55 leading-relaxed">{s.editorial}</p>
+      </div>
+    </div>
+  </div>
+</section>

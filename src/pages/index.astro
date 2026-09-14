@@ -1,4 +1,8 @@
 ---
 import { defaultLang } from '../i18n/ui';
+
+// Static: emitted as an asset, so the Worker is never woken up for `/`.
+export const prerender = true;
+
 return Astro.redirect(`/${defaultLang}/`);
 ---

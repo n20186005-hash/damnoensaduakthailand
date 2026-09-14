@@ -9,16 +9,20 @@ interface Props {
 const { lang, messages } = Astro.props;
 const h = messages.header;
 
+// Curated subset keeps the desktop bar readable; the mobile menu and the
+// on-page table of contents list every section.
 const navItems = [
   { label: h.home, href: '#home' },
   { label: h.about, href: '#about' },
-  { label: h.history, href: '#history' },
-  { label: h.guide, href: '#guide' },
+  { label: h.seasons, href: '#seasons' },
+  { label: h.routes, href: '#routes' },
+  { label: h.weather, href: '#weather' },
+  { label: h.facilities, href: '#facilities' },
   { label: h.food, href: '#food' },
   { label: h.gallery, href: '#gallery' },
-  { label: h.reviews, href: '#reviews' },
   { label: h.map, href: '#map' },
 ];
+const allItems: { label: string; href: string }[] = messages.footer.navItems;
 
 const switchTo = (target: Lang) => `/${target}/`;
 ---
@@ -29,7 +33,7 @@ const switchTo = (target: Lang) => `/${target}/`;
       {siteConfig.name[lang]}
     </a>
 
-    <nav class="hidden lg:flex items-center gap-6 text-sm text-ivory/80">
+    <nav class="hidden lg:flex items-center gap-4 xl:gap-6 text-[13px] text-ivory/80 whitespace-nowrap">
       {navItems.map((item) => (
         <a href={item.href} class="hover:text-goldBright transition-colors">{item.label}</a>
       ))}
@@ -56,7 +60,7 @@ const switchTo = (target: Lang) => `/${target}/`;
 
   <nav id="mobile-menu" class="hidden lg:hidden border-t border-gold/20 bg-teakDeep">
     <div class="max-w-7xl mx-auto px-5 py-3 grid grid-cols-2 gap-2 text-sm text-ivory/80">
-      {navItems.map((item) => (
+      {allItems.map((item) => (
         <a href={item.href} class="py-1.5 hover:text-goldBright transition-colors">{item.label}</a>
       ))}
     </div>

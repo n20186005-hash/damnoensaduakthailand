@@ -1,0 +1,653 @@
+---
+import { getWeather } from '../lib/weather';
+
+interface Props {
+  lang: 'th' | 'en' | 'zh';
+  messages: Record<string, any>;
+}
+const { lang, messages } = Astro.props;
+const w = messages.weather;
+
+/* ------------------------------------------------------------------ *
+ * Grouping, glyphs and the advice rules live here so the server render
+ * and the in-page refresh stay visually identical.
+ * ------------------------------------------------------------------ */
+const GLYPHS: Record<string, string> = {
+  clear:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.1"/><path d="M12 2.6v2.1M12 19.3v2.1M2.6 12h2.1M19.3 12h2.1M5.5 5.5l1.5 1.5M17 17l1.5 1.5M18.5 5.5L17 7M7 17l-1.5 1.5"/></svg>',
+  partly:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="8.7" cy="8.5" r="3"/><path d="M8.7 2.7v1.8M3.1 8.5h1.8M4.6 4.4l1.3 1.3M12.8 4.4l-1.3 1.3"/><path d="M8.4 19h9.3a3.2 3.2 0 0 0 .3-6.4 4.5 4.5 0 0 0-8.5 1.1 2.9 2.9 0 0 0-1.1 5.3Z"/></svg>',
+  overcast:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6.7 18.2h10.4a3.3 3.3 0 0 0 .3-6.6 4.7 4.7 0 0 0-8.8-1.1 3.8 3.8 0 0 0-1.9 7.7Z"/></svg>',
+  fog: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6.5 9.5h11M4.5 13.5h15M7.5 17.5h9"/></svg>',
+  drizzle:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6.7 14.6h10.4a3.3 3.3 0 0 0 .3-6.6 4.7 4.7 0 0 0-8.8-1.1 3.8 3.8 0 0 0-1.9 7.7Z"/><path d="M9.2 17.4l-.6 1.6M13 17.4l-.6 1.6M16.8 17.4l-.6 1.6"/></svg>',
+  rain: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6.7 14.2h10.4a3.3 3.3 0 0 0 .3-6.6 4.7 4.7 0 0 0-8.8-1.1 3.8 3.8 0 0 0-1.9 7.7Z"/><path d="M9 17.2l-1.1 3M13 17.2l-1.1 3M17 17.2l-1.1 3"/></svg>',
+  snow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6.7 14.2h10.4a3.3 3.3 0 0 0 .3-6.6 4.7 4.7 0 0 0-8.8-1.1 3.8 3.8 0 0 0-1.9 7.7Z"/><path d="M9.2 17.4v2.6M8 18.1l2.4 1.2M10.4 18.1L8 19.3M15 17.4v2.6M13.8 18.1l2.4 1.2M16.2 18.1l-2.4 1.2"/></svg>',
+  thunder:
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6.7 14.2h10.4a3.3 3.3 0 0 0 .3-6.6 4.7 4.7 0 0 0-8.8-1.1 3.8 3.8 0 0 0-1.9 7.7Z"/><path d="M12.6 16.4l-2.4 3.3h3l-1.1 2.5"/></svg>',
+};
+
+const HEAVY_RAIN = new Set([63, 65, 66, 67, 81, 82]);
+
+const groupOf = (code: number): string => {
+  if (code <= 1) return 'clear';
+  if (code === 2) return 'partly';
+  if (code === 45 || code === 48) return 'fog';
+  if (code === 3) return 'overcast';
+  if (code >= 51 && code <= 57) return 'drizzle';
+  if ((code >= 61 && code <= 67) || (code >= 80 && code <= 82)) return 'rain';
+  if ((code >= 71 && code <= 77) || code === 85 || code === 86) return 'snow';
+  return 'thunder';
+};
+
+const localeTag = lang === 'th' ? 'th-TH' : lang === 'zh' ? 'zh-CN' : 'en-GB';
+
+/* ---- server-rendered snapshot (also the no-JS fallback) ---- */
+const data: any = await getWeather();
+const hasData = Boolean(data?.current && data?.daily?.time?.length);
+
+const windows: { start: string; end: string; kind: 'clear' | 'heat' | 'rain' }[] = Array.isArray(
+  data?.windows,
+)
+  ? data.windows
+  : [];
+const best = windows[0];
+const bestAlt = windows[1];
+const bestNote = (kind: string) => (kind === 'rain' ? w.bestRain : kind === 'heat' ? w.bestHeat : w.bestClear);
+
+const round = (n: number | undefined | null) => (typeof n === 'number' ? Math.round(n) : null);
+const hhmm = (iso: string) => (iso ? iso.slice(11, 16) : '');
+
+const codeLabel = (code: number | undefined) =>
+  code === undefined ? '' : (w.codes[String(code)] ?? '');
+
+const dayLabel = (iso: string, index: number) => {
+  if (index === 0) return w.today;
+  try {
+    return new Intl.DateTimeFormat(localeTag, {
+      weekday: 'short',
+      day: 'numeric',
+      month: 'short',
+    }).format(new Date(`${iso}T12:00:00+07:00`));
+  } catch {
+    return iso;
+  }
+};
+
+const cur = data?.current;
+const daily = data?.daily;
+const curCode: number | undefined = cur?.weather_code;
+const todayCode: number | undefined = daily?.weather_code?.[0];
+const tMax: number | null = round(daily?.temperature_2m_max?.[0]);
+const tMin: number | null = round(daily?.temperature_2m_min?.[0]);
+const uvMax: number | null = round(daily?.uv_index_max?.[0]);
+const curWind: number | null = round(cur?.wind_speed_10m);
+
+const rainish = [curCode, todayCode].some(
+  (c) => c !== undefined && ['drizzle', 'rain', 'thunder'].includes(groupOf(c))
+);
+const thunderish = [curCode, todayCode].some((c) => c !== undefined && groupOf(c) === 'thunder');
+const heaviest = [curCode, todayCode].some((c) => c !== undefined && HEAVY_RAIN.has(c));
+const foggy = [curCode, todayCode].some((c) => c !== undefined && groupOf(c) === 'fog');
+
+const nowTemp = round(cur?.temperature_2m) ?? tMax ?? 30;
+const swing = tMax !== null && tMin !== null ? tMax - tMin : 0;
+const rainChance = round(daily?.precipitation_probability_max?.[0]) ?? 0;
+const wind = curWind ?? 0;
+const uv = uvMax ?? 0;
+const hot = (tMax ?? 0) >= 32 || nowTemp >= 32;
+const cold = tMax !== null && tMax <= 10;
+
+/* Beaufort force from km/h, so the card can say "force 6" instead of 45 km/h. */
+const windForce =
+  wind >= 89 ? 10 : wind >= 75 ? 9 : wind >= 62 ? 8 : wind >= 50 ? 7 : wind >= 39 ? 6 : wind >= 29 ? 5 : wind >= 20 ? 4 : wind >= 12 ? 3 : wind >= 6 ? 2 : 1;
+
+/* Official warnings come first: they outrank every derived suggestion. */
+const rawAlerts = Array.isArray(data?.alerts) ? (data?.alerts as any[]) : [];
+const alerts: string[] = rawAlerts
+  .slice(0, 3)
+  .map((alert: any) => String(alert?.event ?? alert?.headline ?? '').trim())
+  .filter(Boolean);
+
+/* Each block lists every condition that applies — never a single forced line. */
+const dress: string[] = [];
+if (thunderish || heaviest) dress.push(w.advice.dressStorm);
+else if (rainish) dress.push(w.advice.dressRain);
+if (hot) dress.push(w.advice.dressHot);
+else if (cold) dress.push(w.advice.dressCold);
+else if (swing > 8) dress.push(w.advice.dressLayers);
+if (dress.length === 0) dress.push(w.advice.dressWarm);
+
+const plan: string[] = [];
+if (thunderish) plan.push(w.advice.planThunder);
+else if (heaviest) plan.push(w.advice.planHeavy);
+else if (rainish) plan.push(w.advice.planRain);
+else if (rainChance >= 60) plan.push(w.advice.planChance);
+if (hot) plan.push(w.advice.planHot);
+if (wind >= 39 && wind < 50) plan.push(w.advice.planWind);
+if (foggy) plan.push(w.advice.planFog);
+if (plan.length === 0) {
+  plan.push(groupOf(curCode ?? 0) === 'overcast' ? w.advice.planPartly : w.advice.planClear);
+}
+
+const gear: string[] = [];
+if (thunderish || heaviest) gear.push(w.advice.gearRaincoat);
+else if (rainish || rainChance >= 60) gear.push(w.advice.gearRain);
+if (!rainish && uv >= 5) gear.push(w.advice.gearUv);
+if (hot || nowTemp >= 30) gear.push(w.advice.gearWater);
+if (swing > 8 && !hot) gear.push(w.advice.gearLayer);
+if (wind >= 39) gear.push(w.advice.gearWind);
+if (foggy) gear.push(w.advice.gearMask);
+if (gear.length < 3) gear.push(w.advice.gearCash);
+
+const risks: string[] = [];
+if (thunderish) risks.push(w.advice.riskThunder);
+else if (heaviest) risks.push(w.advice.riskHeavy);
+if (wind >= 50) risks.push(w.advice.riskGale);
+if (foggy) risks.push(w.advice.riskFog);
+if ((tMax ?? 0) >= 38) risks.push(w.advice.riskHeat);
+
+const clientConfig = {
+  codes: w.codes,
+  advice: w.advice,
+  best: {
+    alt: w.bestAlt,
+    clear: w.bestClear,
+    heat: w.bestHeat,
+    rain: w.bestRain,
+    none: w.bestNone,
+    note: w.bestNote,
+  },
+  today: w.today,
+  glyphs: GLYPHS,
+  locale: localeTag,
+  heavyRain: [...HEAVY_RAIN],
+  labels: {
+    feelsLike: w.feelsLike,
+    humidity: w.humidity,
+    wind: w.wind,
+    windScale: w.windScale,
+    precip: w.precip,
+    rain: w.rain,
+    tempMax: w.tempMax,
+    tempMin: w.tempMin,
+  },
+};
+---
+
+<section id="weather" class="py-20 bg-ivory text-ink">
+  <div class="max-w-7xl mx-auto px-5" id="weather-root" data-has-data={hasData ? 'true' : 'false'}>
+    <p class="font-hand text-gold text-xl md:text-2xl">{w.label}</p>
+    <h2 class="font-display font-semibold text-3xl md:text-5xl text-teak mt-2">{w.heading}</h2>
+    <p class="mt-5 text-ink/80 max-w-3xl">{w.lead}</p>
+
+    {
+      hasData ? (
+        <div class="mt-10 grid lg:grid-cols-12 gap-6">
+          {/* current conditions */}
+          <div class="lg:col-span-5 rounded-2xl bg-teak text-ivory p-7 flex flex-col">
+            <div class="text-xs uppercase tracking-wider text-gold">{w.currentTitle}</div>
+
+            <div class="mt-5 flex items-center gap-5">
+              <span class="w-16 h-16 text-goldBright shrink-0" data-role="current-glyph">
+                <Fragment set:html={GLYPHS[groupOf(curCode ?? 0)]} />
+              </span>
+              <div>
+                <div class="font-display text-5xl leading-none text-goldBright">
+                  <span data-role="current-temp">{round(cur?.temperature_2m)}</span>°
+                </div>
+                <div class="text-sm text-ivory/80 mt-1" data-role="current-label">
+                  {codeLabel(curCode)}
+                </div>
+              </div>
+            </div>
+
+            <dl class="mt-7 grid grid-cols-2 gap-x-6 gap-y-4 text-sm">
+              <div>
+                <dt class="text-ivory/55 text-xs">{w.feelsLike}</dt>
+                <dd class="text-ivory/90 font-semibold">
+                  <span data-role="feels">{round(cur?.apparent_temperature)}</span>°
+                </dd>
+              </div>
+              <div>
+                <dt class="text-ivory/55 text-xs">{w.humidity}</dt>
+                <dd class="text-ivory/90 font-semibold">
+                  <span data-role="humidity">{round(cur?.relative_humidity_2m)}</span>%
+                </dd>
+              </div>
+              <div>
+                <dt class="text-ivory/55 text-xs">{w.wind}</dt>
+                <dd class="text-ivory/90 font-semibold">
+                  <span data-role="wind">{round(cur?.wind_speed_10m)}</span> km/h
+                  <span class="text-xs font-normal text-ivory/70" data-role="wind-force">
+                    · {w.windScale} {windForce}
+                  </span>
+                </dd>
+              </div>
+              <div>
+                <dt class="text-ivory/55 text-xs">{w.precip}</dt>
+                <dd class="text-ivory/90 font-semibold">
+                  <span data-role="precip">{round(daily?.precipitation_probability_max?.[0])}</span>%
+                </dd>
+              </div>
+              <div>
+                <dt class="text-ivory/55 text-xs">{w.rain}</dt>
+                <dd class="text-ivory/90 font-semibold">
+                  <span data-role="rain">{daily?.precipitation_sum?.[0] ?? 0}</span> mm
+                </dd>
+              </div>
+              <div>
+                <dt class="text-ivory/55 text-xs">{w.tempMax}/{w.tempMin}</dt>
+                <dd class="text-ivory/90 font-semibold">
+                  <span data-role="tmax">{tMax}</span>° / <span data-role="tmin">{tMin}</span>°
+                </dd>
+              </div>
+            </dl>
+
+            <div class="mt-7 pt-5 border-t border-ivory/15 flex flex-wrap gap-x-6 gap-y-2 text-xs text-ivory/70">
+              <span>☀ {w.sunrise} <span data-role="sunrise">{hhmm(daily?.sunrise?.[0])}</span></span>
+              <span>☾ {w.sunset} <span data-role="sunset">{hhmm(daily?.sunset?.[0])}</span></span>
+            </div>
+          </div>
+
+          {/* advice */}
+          <div class="lg:col-span-7 flex flex-col gap-4">
+            <div
+              data-role="alert"
+              class:list={[
+                'rounded-2xl bg-burgundy text-ivory px-6 py-5 shadow-lg shadow-burgundy/20',
+                alerts.length ? '' : 'hidden',
+              ]}
+            >
+              <div class="text-xs uppercase tracking-wider text-goldBright flex items-center gap-2">
+                <span aria-hidden="true">⚠</span>{w.advice.alertTitle}
+              </div>
+              <ul class="mt-2 space-y-1" data-role="alert-list">
+                {alerts.map((name) => (
+                  <li class="text-sm">
+                    <span class="font-semibold">{name}</span> — {w.advice.alertAdvice}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div
+              data-role="risk"
+              class:list={[
+                'rounded-2xl border border-burgundy/40 bg-burgundy/[0.08] px-6 py-4',
+                risks.length ? '' : 'hidden',
+              ]}
+            >
+              <div class="text-xs uppercase tracking-wider text-burgundy/80 flex items-center gap-2">
+                <span aria-hidden="true">⚠</span>{w.riskTitle}
+              </div>
+              <ul class="mt-2 flex flex-wrap gap-2" data-role="risk-list">
+                {risks.map((name) => (
+                  <li class="rounded-full border border-burgundy/40 bg-burgundy/10 px-3 py-0.5 text-xs font-semibold text-burgundy">
+                    {name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="rounded-2xl border border-gold/35 bg-white/55 p-7 grow">
+              <div class="text-xs uppercase tracking-wider text-gold mb-1">{w.adviceTitle}</div>
+
+              <div class="mt-4 rounded-xl border border-teal/25 bg-teal/[0.06] px-5 py-4">
+                <div class="text-xs uppercase tracking-wider text-teak/70">{w.bestTitle}</div>
+                <div class="mt-1.5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                  <span class="font-display text-2xl text-teak" data-role="best-range">
+                    {best ? `${best.start} – ${best.end}` : w.bestNone}
+                  </span>
+                  <span class="text-sm text-ink/75" data-role="best-note">
+                    {best ? bestNote(best.kind) : w.bestNote}
+                  </span>
+                </div>
+                <div class:list={['mt-1 text-xs text-teak/70', bestAlt ? '' : 'hidden']} data-role="best-alt">
+                  {bestAlt ? `${w.bestAlt}: ${bestAlt.start} – ${bestAlt.end}` : ''}
+                </div>
+              </div>
+
+              <div class="mt-3 space-y-5">
+                <div>
+                  <div class="font-display text-lg text-teak flex items-center gap-2">
+                    <span aria-hidden="true">👕</span>{w.adviceDress}
+                  </div>
+                  <ul class="mt-2 space-y-1.5" data-role="advice-dress">
+                    {dress.map((line) => (
+                      <li class="flex gap-2 text-sm text-ink/80">
+                        <span class="text-gold" aria-hidden="true">•</span><span>{line}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <div class="font-display text-lg text-teak flex items-center gap-2">
+                    <span aria-hidden="true">🗺</span>{w.advicePlan}
+                  </div>
+                  <ul class="mt-2 space-y-1.5" data-role="advice-plan">
+                    {plan.map((line) => (
+                      <li class="flex gap-2 text-sm text-ink/80">
+                        <span class="text-gold" aria-hidden="true">•</span><span>{line}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <div class="font-display text-lg text-teak flex items-center gap-2">
+                    <span aria-hidden="true">🎒</span>{w.adviceGear}
+                  </div>
+                  <ul class="mt-2 flex flex-wrap gap-2" data-role="advice-gear">
+                    {gear.map((g) => (
+                      <li class="rounded-full border border-gold/50 bg-gold/10 px-3 py-1 text-xs text-teak">
+                        {g}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 7 day forecast */}
+          <div class="lg:col-span-12 rounded-2xl border border-teak/15 bg-white/45 p-7">
+            <div class="text-xs uppercase tracking-wider text-gold">{w.forecastTitle}</div>
+            <ul class="mt-5 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+              {daily.time.map((iso: string, i: number) => (
+                <li
+                  class="rounded-xl border border-teak/12 bg-ivory/70 px-3 py-4 text-center"
+                  data-day={i}
+                >
+                  <div class="text-xs text-teak/70 font-semibold">{dayLabel(iso, i)}</div>
+                  <span class="block w-8 h-8 mx-auto mt-3 text-teak/80" data-role="day-glyph">
+                    <Fragment set:html={GLYPHS[groupOf(daily.weather_code[i])]} />
+                  </span>
+                  <div class="mt-2 text-sm text-ink/85" data-role="day-label">
+                    {codeLabel(daily.weather_code[i])}
+                  </div>
+                  <div class="mt-2 font-display text-teak">
+                    <span data-role="day-max">{round(daily.temperature_2m_max[i])}</span>°
+                    <span class="text-ink/45 text-sm">
+                      / <span data-role="day-min">{round(daily.temperature_2m_min[i])}</span>°
+                    </span>
+                  </div>
+                  <div class="mt-1 text-[0.7rem] text-teak/60">
+                    💧 <span data-role="day-precip">{round(daily.precipitation_probability_max?.[i]) ?? 0}</span>%
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ) : (
+        <div class="mt-10 rounded-2xl border border-teak/15 bg-white/50 p-8 max-w-3xl">
+          <p class="text-teak font-semibold">{w.error}</p>
+          <p class="text-sm text-ink/70 mt-2">{w.fallbackNote}</p>
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<script define:vars={{ WEATHER: clientConfig }}>
+  const root = document.getElementById('weather-root');
+  if (root && root.dataset.hasData === 'true') {
+    const M = WEATHER;
+    const CACHE_KEY = 'damnoen-weather-v1';
+    const TTL = 30 * 60 * 1000;
+    const HEAVY = new Set(M.heavyRain);
+
+    const groupOf = (c) => {
+      if (c <= 1) return 'clear';
+      if (c === 2) return 'partly';
+      if (c === 45 || c === 48) return 'fog';
+      if (c === 3) return 'overcast';
+      if (c >= 51 && c <= 57) return 'drizzle';
+      if ((c >= 61 && c <= 67) || (c >= 80 && c <= 82)) return 'rain';
+      if ((c >= 71 && c <= 77) || c === 85 || c === 86) return 'snow';
+      return 'thunder';
+    };
+
+    const pick = (sel) => root.querySelector(sel);
+    const setText = (role, value) => {
+      const el = root.querySelector(`[data-role="${role}"]`);
+      if (el && value !== null && value !== undefined) el.textContent = String(value);
+    };
+    const round = (n) => (typeof n === 'number' ? Math.round(n) : null);
+    const renderList = (role, items) => {
+      const el = root.querySelector('[data-role="' + role + '"]');
+      if (!el) return;
+      el.innerHTML = items
+        .map(
+          (line) =>
+            '<li class="flex gap-2 text-sm text-ink/80"><span class="text-gold" aria-hidden="true">•</span><span>' +
+            line +
+            '</span></li>'
+        )
+        .join('');
+    };
+
+    const dayLabel = (iso, i) => {
+      if (i === 0) return M.today;
+      try {
+        return new Intl.DateTimeFormat(M.locale, {
+          weekday: 'short',
+          day: 'numeric',
+          month: 'short',
+        }).format(new Date(iso + 'T12:00:00+07:00'));
+      } catch {
+        return iso;
+      }
+    };
+
+    const render = (json) => {
+      const cur = json.current || {};
+      const daily = json.daily || {};
+      if (!daily.time) return;
+
+      const curCode = cur.weather_code;
+      const todayCode = daily.weather_code ? daily.weather_code[0] : undefined;
+      const tMax = round(daily.temperature_2m_max ? daily.temperature_2m_max[0] : null);
+      const tMin = round(daily.temperature_2m_min ? daily.temperature_2m_min[0] : null);
+      const uvMax = round(daily.uv_index_max ? daily.uv_index_max[0] : null);
+      const wind = round(cur.wind_speed_10m);
+
+      setText('current-temp', round(cur.temperature_2m));
+      setText('feels', round(cur.apparent_temperature));
+      setText('humidity', round(cur.relative_humidity_2m));
+      setText('wind', wind);
+      setText('precip', round(daily.precipitation_probability_max ? daily.precipitation_probability_max[0] : null));
+      setText('rain', daily.precipitation_sum ? daily.precipitation_sum[0] : 0);
+      setText('tmax', tMax);
+      setText('tmin', tMin);
+      setText('sunrise', (daily.sunrise && daily.sunrise[0] ? daily.sunrise[0] : '').slice(11, 16));
+      setText('sunset', (daily.sunset && daily.sunset[0] ? daily.sunset[0] : '').slice(11, 16));
+
+      const glyphEl = root.querySelector('[data-role="current-glyph"]');
+      if (glyphEl && curCode !== undefined) glyphEl.innerHTML = M.glyphs[groupOf(curCode)];
+      const labelEl = root.querySelector('[data-role="current-label"]');
+      if (labelEl && curCode !== undefined) labelEl.textContent = M.codes[String(curCode)] || '';
+
+      const groups = [curCode, todayCode].filter((c) => c !== undefined);
+      const rainish = groups.some((c) => ['drizzle', 'rain', 'thunder'].indexOf(groupOf(c)) !== -1);
+      const thunderish = groups.some((c) => groupOf(c) === 'thunder');
+      const heaviest = groups.some((c) => HEAVY.has(c));
+      const foggy = groups.some((c) => groupOf(c) === 'fog');
+      const nowTemp = round(cur.temperature_2m) || tMax || 30;
+      const swing = tMax !== null && tMin !== null ? tMax - tMin : 0;
+      const chance =
+        round(daily.precipitation_probability_max ? daily.precipitation_probability_max[0] : null) || 0;
+      const uv = uvMax || 0;
+      const windNow = wind || 0;
+      const hot = (tMax || 0) >= 32 || nowTemp >= 32;
+      const cold = tMax !== null && tMax <= 10;
+
+      const windForce =
+        windNow >= 89
+          ? 10
+          : windNow >= 75
+            ? 9
+            : windNow >= 62
+              ? 8
+              : windNow >= 50
+                ? 7
+                : windNow >= 39
+                  ? 6
+                  : windNow >= 29
+                    ? 5
+                    : windNow >= 20
+                      ? 4
+                      : windNow >= 12
+                        ? 3
+                        : windNow >= 6
+                          ? 2
+                          : 1;
+      setText('wind-force', '· ' + M.labels.windScale + ' ' + windForce);
+
+      const alerts = (Array.isArray(json.alerts) ? json.alerts : [])
+        .slice(0, 3)
+        .map((a) => String((a && (a.event || a.headline)) || '').trim())
+        .filter(Boolean);
+      const alertBox = root.querySelector('[data-role="alert"]');
+      const alertList = root.querySelector('[data-role="alert-list"]');
+      if (alertBox && alertList) {
+        alertList.innerHTML = alerts
+          .map(
+            (name) =>
+              '<li class="text-sm"><span class="font-semibold">' +
+              name +
+              '</span> — ' +
+              M.advice.alertAdvice +
+              '</li>'
+          )
+          .join('');
+        alertBox.classList.toggle('hidden', alerts.length === 0);
+      }
+
+      const dress = [];
+      if (thunderish || heaviest) dress.push(M.advice.dressStorm);
+      else if (rainish) dress.push(M.advice.dressRain);
+      if (hot) dress.push(M.advice.dressHot);
+      else if (cold) dress.push(M.advice.dressCold);
+      else if (swing > 8) dress.push(M.advice.dressLayers);
+      if (dress.length === 0) dress.push(M.advice.dressWarm);
+
+      const plan = [];
+      if (thunderish) plan.push(M.advice.planThunder);
+      else if (heaviest) plan.push(M.advice.planHeavy);
+      else if (rainish) plan.push(M.advice.planRain);
+      else if (chance >= 60) plan.push(M.advice.planChance);
+      if (hot) plan.push(M.advice.planHot);
+      if (windNow >= 39 && windNow < 50) plan.push(M.advice.planWind);
+      if (foggy) plan.push(M.advice.planFog);
+      if (plan.length === 0) plan.push(groupOf(curCode) === 'overcast' ? M.advice.planPartly : M.advice.planClear);
+
+      const gear = [];
+      if (thunderish || heaviest) gear.push(M.advice.gearRaincoat);
+      else if (rainish || chance >= 60) gear.push(M.advice.gearRain);
+      if (!rainish && uv >= 5) gear.push(M.advice.gearUv);
+      if (hot || nowTemp >= 30) gear.push(M.advice.gearWater);
+      if (swing > 8 && !hot) gear.push(M.advice.gearLayer);
+      if (windNow >= 39) gear.push(M.advice.gearWind);
+      if (foggy) gear.push(M.advice.gearMask);
+      if (gear.length < 3) gear.push(M.advice.gearCash);
+
+      const risks = [];
+      if (thunderish) risks.push(M.advice.riskThunder);
+      else if (heaviest) risks.push(M.advice.riskHeavy);
+      if (windNow >= 50) risks.push(M.advice.riskGale);
+      if (foggy) risks.push(M.advice.riskFog);
+      if ((tMax || 0) >= 38) risks.push(M.advice.riskHeat);
+
+      renderList('advice-dress', dress);
+      renderList('advice-plan', plan);
+      const gearList = root.querySelector('[data-role="advice-gear"]');
+      if (gearList) {
+        gearList.innerHTML = gear
+          .map(
+            (g) =>
+              '<li class="rounded-full border border-gold/50 bg-gold/10 px-3 py-1 text-xs text-teak">' +
+              g +
+              '</li>'
+          )
+          .join('');
+      }
+      const riskBox = root.querySelector('[data-role="risk"]');
+      const riskList = root.querySelector('[data-role="risk-list"]');
+      if (riskBox && riskList) {
+        riskList.innerHTML = risks
+          .map(
+            (r) =>
+              '<li class="rounded-full border border-burgundy/40 bg-burgundy/10 px-3 py-0.5 text-xs font-semibold text-burgundy">' +
+              r +
+              '</li>'
+          )
+          .join('');
+        riskBox.classList.toggle('hidden', risks.length === 0);
+      }
+
+      const windows = Array.isArray(json.windows) ? json.windows : [];
+      const bestWindow = windows[0];
+      const altWindow = windows[1];
+      const bestNote = (kind) =>
+        kind === 'rain' ? M.best.rain : kind === 'heat' ? M.best.heat : M.best.clear;
+      const rangeEl = root.querySelector('[data-role="best-range"]');
+      if (rangeEl) rangeEl.textContent = bestWindow ? bestWindow.start + ' – ' + bestWindow.end : M.best.none;
+      const noteEl = root.querySelector('[data-role="best-note"]');
+      if (noteEl) noteEl.textContent = bestWindow ? bestNote(bestWindow.kind) : M.best.note;
+      const altEl = root.querySelector('[data-role="best-alt"]');
+      if (altEl) {
+        altEl.textContent = altWindow ? M.best.alt + ': ' + altWindow.start + ' – ' + altWindow.end : '';
+        altEl.classList.toggle('hidden', !altWindow);
+      }
+
+      daily.time.forEach((iso, i) => {
+        const cell = root.querySelector(`[data-day="${i}"]`);
+        if (!cell) return;
+        cell.querySelector('[data-role="day-label"]').textContent = M.codes[String(daily.weather_code[i])] || '';
+        cell.querySelector('[data-role="day-glyph"]').innerHTML = M.glyphs[groupOf(daily.weather_code[i])];
+        cell.querySelector('[data-role="day-max"]').textContent = Math.round(daily.temperature_2m_max[i]);
+        cell.querySelector('[data-role="day-min"]').textContent = Math.round(daily.temperature_2m_min[i]);
+        const p = cell.querySelector('[data-role="day-precip"]');
+        if (p) p.textContent = Math.round(daily.precipitation_probability_max[i] || 0);
+        const head = cell.firstElementChild;
+        if (head) head.textContent = dayLabel(iso, i);
+      });
+    };
+
+    const load = async () => {
+      let cached = null;
+      try {
+        const raw = localStorage.getItem(CACHE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Date.now() - parsed.t < TTL) cached = parsed.d;
+        }
+      } catch {
+        /* storage unavailable */
+      }
+
+      if (cached) {
+        render(cached);
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/weather', { headers: { accept: 'application/json' } });
+        if (!res.ok) throw new Error('unavailable');
+        const json = await res.json();
+        render(json);
+        try {
+          localStorage.setItem(CACHE_KEY, JSON.stringify({ t: Date.now(), d: json }));
+        } catch {
+          /* storage unavailable */
+        }
+      } catch {
+        /* keep the snapshot already rendered into the page */
+      }
+    };
+
+    load();
+  }
+</script>

@@ -1,0 +1,58 @@
+---
+interface Props {
+  messages: Record<string, any>;
+}
+const { messages } = Astro.props;
+const s = messages.seasons;
+
+const levelStyle: Record<string, string> = {
+  levelBest: 'bg-gold text-teak',
+  levelGood: 'bg-goldBright/85 text-teak',
+  levelFair: 'bg-ivory/25 text-ivory',
+  levelPlan: 'bg-burgundy/75 text-ivory',
+};
+---
+
+<section id="seasons" class="py-20 bg-teak text-ivory">
+  <div class="max-w-7xl mx-auto px-5">
+    <p class="font-hand text-goldBright text-xl md:text-2xl">{s.label}</p>
+    <h2 class="font-display font-semibold text-3xl md:text-5xl mt-2">{s.heading}</h2>
+    <p class="mt-5 text-ivory/80 max-w-3xl">{s.lead}</p>
+
+    <div class="mt-10 overflow-x-auto rounded-2xl border border-gold/25">
+      <table class="w-full min-w-[60rem] text-left text-sm">
+        <thead class="bg-teakDeep text-gold text-xs uppercase tracking-wider">
+          <tr>
+            <th scope="col" class="px-4 py-4 w-56">{s.headSeason}</th>
+            <th scope="col" class="px-4 py-4 w-28">{s.headMonths}</th>
+            <th scope="col" class="px-4 py-4">{s.headWeather}</th>
+            <th scope="col" class="px-4 py-4">{s.headWater}</th>
+            <th scope="col" class="px-4 py-4 w-44">{s.headCrowd}</th>
+            <th scope="col" class="px-4 py-4 w-64">{s.headTip}</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gold/15">
+          {s.items.map((item: any) => (
+            <tr class="align-top transition-colors hover:bg-white/[0.04]">
+              <th scope="row" class="px-4 py-5 font-normal">
+                <span
+                  class={`inline-block rounded-full px-2.5 py-0.5 text-[0.7rem] font-semibold tracking-wide ${levelStyle[item.level] ?? levelStyle.levelFair}`}
+                >
+                  {s[item.level]}
+                </span>
+                <div class="font-display text-base text-goldBright mt-2">{item.name}</div>
+              </th>
+              <td class="px-4 py-5 text-ivory/75 whitespace-nowrap">{item.months}</td>
+              <td class="px-4 py-5 text-ivory/80">{item.weather}</td>
+              <td class="px-4 py-5 text-ivory/80">{item.water}</td>
+              <td class="px-4 py-5 text-ivory/80">{item.crowd}</td>
+              <td class="px-4 py-5 text-goldBright/90">{item.tip}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mt-4 text-xs text-ivory/50">{s.note}</p>
+  </div>
+</section>

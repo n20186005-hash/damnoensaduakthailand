@@ -2,6 +2,9 @@
 import LegalDoc from '../../components/LegalDoc.astro';
 import { languagesList } from '../../i18n/ui';
 
+// Static page: prerendered for every locale, never rendered by the Worker.
+export const prerender = true;
+
 export async function getStaticPaths() {
   return languagesList.map((lang) => ({ params: { lang } }));
 }

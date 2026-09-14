@@ -11,7 +11,7 @@ const { type } = Astro.props;
 const { lang, messages } = await getI18n(Astro.url);
 const doc = (messages.legal as any)[type];
 ---
-<BaseLayout lang={lang} title={doc.title} description={doc.title}>
+<BaseLayout lang={lang} title={doc.title} description={doc.title} noindex={true}>
   <Header lang={lang} messages={messages} />
   <div class="bg-teakDeep min-h-screen pt-24 pb-12">
     <main class="mx-auto max-w-3xl px-5 text-ivory/85 leading-relaxed">

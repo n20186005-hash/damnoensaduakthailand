@@ -22,7 +22,7 @@ const mapsUrl = siteConfig.mapsUrl;
       <div>
         <div class="text-xs uppercase tracking-wider text-gold mb-3">{footer.navTitle}</div>
         <ul class="grid grid-cols-2 gap-2 text-sm">
-          {footer.navItems.map((n) => (
+          {footer.navItems.map((n: any) => (
             <li><a href={n.href} class="text-ivory/80 hover:text-goldBright transition-colors">{n.label}</a></li>
           ))}
         </ul>
@@ -55,7 +55,7 @@ const mapsUrl = siteConfig.mapsUrl;
               rel="noopener noreferrer"
               class="text-goldBright hover:underline inline-flex items-center gap-1"
             >
-              {s.name[lang]} <span class="text-ivory/40">↗</span>
+              {(s.name as any)[lang]} <span class="text-ivory/40">↗</span>
             </a>
           </li>
         ))}

@@ -1,36 +1,57 @@
 ---
-import { languagesList } from '../../i18n/ui';
+import { languagesList, getI18n } from '../../i18n/ui';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Hero from '../../components/Hero.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
 import About from '../../components/About.astro';
+import Seasons from '../../components/Seasons.astro';
+import WeatherSection from '../../components/WeatherSection.astro';
 import History from '../../components/History.astro';
+import Stories from '../../components/Stories.astro';
 import Guide from '../../components/Guide.astro';
+import Routes from '../../components/Routes.astro';
+import Facilities from '../../components/Facilities.astro';
 import Food from '../../components/Food.astro';
+import Etiquette from '../../components/Etiquette.astro';
 import Gallery from '../../components/Gallery.astro';
 import Reviews from '../../components/Reviews.astro';
 import MapSection from '../../components/MapSection.astro';
+import SourcesSection from '../../components/SourcesSection.astro';
 import Footer from '../../components/Footer.astro';
-import { getI18n } from '../../i18n/ui';
 
-export async function getStaticPaths() {
-  return languagesList.map((lang) => ({ params: { lang } }));
+// On-demand rendering: the Cloudflare Worker renders this page per request so
+// the weather module can be fetched and cached server-side. The legal pages and
+// the root redirect opt back into prerendering with `export const prerender = true`.
+export const prerender = false;
+
+const requested = Astro.url.pathname.split('/').filter(Boolean)[0] ?? '';
+if (!(languagesList as readonly string[]).includes(requested)) {
+  return Astro.rewrite('/404');
 }
 
 const { lang, messages } = await getI18n(Astro.url);
 ---
 
-<BaseLayout lang={lang} title={messages.meta.title} description={messages.meta.description}>
+<BaseLayout lang={lang} title={messages.meta.title} description={messages.meta.description} faqList={messages.guide.faqs}>
   <Header lang={lang} messages={messages} />
   <main>
     <Hero lang={lang} messages={messages} />
+    <TableOfContents messages={messages} />
     <About messages={messages} />
+    <Seasons messages={messages} />
+    <WeatherSection lang={lang} messages={messages} />
     <History messages={messages} />
+    <Stories messages={messages} />
     <Guide messages={messages} />
+    <Routes messages={messages} />
+    <Facilities messages={messages} />
     <Food messages={messages} />
+    <Etiquette messages={messages} />
     <Gallery messages={messages} />
     <Reviews messages={messages} />
     <MapSection lang={lang} messages={messages} />
+    <SourcesSection lang={lang} messages={messages} />
   </main>
   <Footer lang={lang} messages={messages} />
 </BaseLayout>
