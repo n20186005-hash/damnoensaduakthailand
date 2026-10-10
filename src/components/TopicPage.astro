@@ -1,0 +1,118 @@
+---
+import TopicLayout from '../layouts/TopicLayout.astro';
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+import { getI18n } from '../i18n/ui';
+
+interface Topic {
+  title: string;
+  metaTitle: string;
+  metaDescription: string;
+  label: string;
+  intro: string;
+  sections: { h: string; body: string; list?: string[] }[];
+  faqs: { q: string; a: string }[];
+  relatedTitle: string;
+}
+
+interface Props {
+  lang: string;
+  slug: string;
+  key: string;
+}
+
+const { lang, slug, key } = Astro.props;
+const { t, messages } = await getI18n(Astro.url);
+const topic: Topic = messages.topics[key];
+const topics: Record<string, Topic> = messages.topics;
+
+const homeHref = `/${lang}/`;
+const canonicalPath = `/${lang}/${slug}/`;
+
+const slugFor: Record<string, string> = {
+  openingHours: 'opening-hours',
+  boatPrices: 'boat-prices',
+  fromBangkok: 'from-bangkok',
+  avoidScams: 'avoid-scams',
+  maeklongDayTrip: 'maeklong-day-trip',
+};
+
+const related = Object.entries(topics)
+  .filter(([k]) => k !== key)
+  .map(([k, v]) => ({ slug: slugFor[k] ?? k, title: v.title }));
+---
+
+<TopicLayout
+  lang={lang}
+  slug={slug}
+  key={key}
+  title={topic.metaTitle}
+  description={topic.metaDescription}
+  faqs={topic.faqs}
+  breadcrumb={[{ name: topic.title, href: canonicalPath }]}
+>
+  <Header lang={lang} messages={messages} />
+
+  <main class="max-w-3xl mx-auto px-4 py-8">
+    <nav class="text-sm text-stone-500 mb-4" aria-label="Breadcrumb">
+      <a href={homeHref} class="hover:text-teak">{t('nav.home')}</a>
+      <span class="mx-2">/</span>
+      <span class="text-stone-700">{topic.title}</span>
+    </nav>
+
+    <p class="text-sm font-semibold tracking-widest text-teak uppercase">{topic.label}</p>
+    <h1 class="text-3xl sm:text-4xl font-bold text-ink mt-2">{topic.title}</h1>
+    <p class="text-stone-600 mt-4 text-lg">{topic.intro}</p>
+
+    <div class="mt-8 space-y-8">
+      {topic.sections.map((section) => (
+        <section>
+          <h2 class="text-xl font-semibold text-ink">{section.h}</h2>
+          {section.body && <p class="text-stone-600 mt-2 leading-relaxed">{section.body}</p>}
+          {section.list && section.list.length > 0 && (
+            <ul class="mt-3 space-y-2 list-disc pl-5 text-stone-600">
+              {section.list.map((item) => <li>{item}</li>)}
+            </ul>
+          )}
+        </section>
+      ))}
+    </div>
+
+    <section class="mt-10">
+      <h2 class="text-2xl font-bold text-ink">{t('faqs.heading')}</h2>
+      <div class="mt-4 space-y-3">
+        {topic.faqs.map((faq) => (
+          <details class="group rounded-xl border border-stone-200 bg-white px-4 py-3">
+            <summary class="cursor-pointer font-medium text-ink list-none flex items-center justify-between">
+              <span>{faq.q}</span>
+              <span class="text-teak transition group-open:rotate-45">+</span>
+            </summary>
+            <p class="text-stone-600 mt-2 leading-relaxed">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <section class="mt-10">
+      <h2 class="text-xl font-semibold text-ink">{topic.relatedTitle}</h2>
+      <div class="mt-4 grid sm:grid-cols-2 gap-3">
+        {related.map((r) => (
+          <a
+            href={`/${lang}/${r.slug}/`}
+            class="block rounded-xl border border-stone-200 bg-white px-4 py-3 font-medium text-teak hover:bg-stone-100 transition"
+          >
+            {r.title} →
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <div class="mt-10">
+      <a href={homeHref} class="inline-flex items-center gap-1 text-teak font-medium hover:underline">
+        ← {t('nav.home')}
+      </a>
+    </div>
+  </main>
+
+  <Footer lang={lang} messages={messages} />
+</TopicLayout>

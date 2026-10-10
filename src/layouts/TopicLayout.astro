@@ -1,0 +1,109 @@
+---
+import { siteConfig } from '../config';
+import { htmlLang, languagesList } from '../i18n/ui';
+
+interface BreadcrumbItem {
+  name: string;
+  href: string;
+}
+
+interface Props {
+  lang: string;
+  slug: string;
+  key: string;
+  title: string;
+  description: string;
+  faqs: { q: string; a: string }[];
+  breadcrumb: BreadcrumbItem[];
+  noindex?: boolean;
+}
+
+const { lang, slug, title, description, faqs, breadcrumb, noindex = false } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, siteConfig.domain).href;
+
+// Build hreflang alternates by swapping the first path segment (the language code).
+const buildAlternateUrl = (targetLang: string): string => {
+  const pathParts = Astro.url.pathname.split('/').filter(Boolean);
+  if (pathParts.length > 0) pathParts[0] = targetLang;
+  return new URL('/' + pathParts.join('/'), siteConfig.domain).href;
+};
+
+const alternates = languagesList.map((l) => ({ lang: htmlLang[l], href: buildAlternateUrl(l) }));
+alternates.push({ lang: 'x-default', href: buildAlternateUrl('en') });
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Home',
+      item: new URL(`/${lang}/`, siteConfig.domain).href,
+    },
+    ...breadcrumb.map((b, i) => ({
+      '@type': 'ListItem',
+      position: i + 2,
+      name: b.name,
+      item: new URL(b.href, siteConfig.domain).href,
+    })),
+  ],
+};
+
+const webPageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  '@id': canonical,
+  url: canonical,
+  name: title,
+  description,
+  inLanguage: htmlLang[lang],
+  isPartOf: { '@type': 'WebSite', name: siteConfig.name[lang], url: siteConfig.domain },
+};
+---
+
+<!doctype html>
+<html lang={htmlLang[lang]}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    {alternates.map((a) => (
+      <link rel="alternate" hreflang={a.lang} href={a.href} />
+    ))}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={siteConfig.name[lang]} />
+    <meta property="og:locale" content={htmlLang[lang]} />
+    <meta property="og:image" content={`${siteConfig.domain}/gallery/damnoen-saduak-floating-market-1.jpg`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="icon" type="image/jpeg" href={`/gallery/damnoen-saduak-floating-market-1.jpg`} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(webPageSchema)}></script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
+  </head>
+  <body class="bg-stone-50 text-ink antialiased">
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,32 @@
+---
+import { getI18n, languagesList } from '../../i18n/ui';
+import TopicPage from '../../components/TopicPage.astro';
+
+export const prerender = true;
+
+const TOPICS = [
+  { slug: 'opening-hours', key: 'openingHours' },
+  { slug: 'boat-prices', key: 'boatPrices' },
+  { slug: 'from-bangkok', key: 'fromBangkok' },
+  { slug: 'avoid-scams', key: 'avoidScams' },
+  { slug: 'maeklong-day-trip', key: 'maeklongDayTrip' },
+];
+
+export function getStaticPaths() {
+  return languagesList
+    .map((lang) =>
+      TOPICS.map((tp) => ({
+        params: { lang, topic: tp.slug },
+        props: { lang, slug: tp.slug, key: tp.key },
+      }))
+    )
+    .flat();
+}
+
+const { lang, slug, key } = Astro.props;
+const { messages } = await getI18n(Astro.url);
+const topic = messages.topics[key];
+const topics = messages.topics;
+---
+
+<TopicPage lang={lang} slug={slug} key={key} topic={topic} topics={topics} />

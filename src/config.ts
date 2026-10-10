@@ -11,7 +11,7 @@ export const siteConfig = {
     : 'https://damnoensaduakthailand.com',
 
   // editorial
-  lastUpdated: '2026-09-14',
+  lastUpdated: '2026-10-10',
   themeColor: '#0d2a2e',
   localeTags: { th: 'th-TH', en: 'en', zh: 'zh-CN' } as Record<string, string>,
 
@@ -46,7 +46,7 @@ export const siteConfig = {
   },
 
   rating: '3.8',
-  reviewCount: '34,885',
+  reviewCount: '35,000',
   category: {
     th: 'ตลาดน้ำ',
     en: 'Floating Market',

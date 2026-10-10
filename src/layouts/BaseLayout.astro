@@ -54,14 +54,6 @@ const touristAttractionLd = {
     longitude: siteConfig.coords.lng,
   },
   hasMap: siteConfig.mapsUrl,
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: siteConfig.rating,
-    ratingCount: siteConfig.reviewCount.replace(/,/g, ''),
-    reviewCount: siteConfig.reviewCount.replace(/,/g, ''),
-    bestRating: '5',
-    worstRating: '1',
-  },
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',

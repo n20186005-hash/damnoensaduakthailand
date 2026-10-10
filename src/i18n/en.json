@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Damnoen Saduak Floating Market Guide (2026) – Hours, Boat Price & Transport",
-    "description": "Planning your trip to Damnoen Saduak Floating Market in Ratchaburi? Check opening hours, boat tour options, map location, and transport from Bangkok."
+    "title": "Damnoen Saduak Floating Market: Hours, Boats & Bangkok Guide",
+    "description": "Visit Damnoen Saduak Floating Market in Ratchaburi, Thailand. Find market hours, boat price estimates, transport from Bangkok, maps and practical visitor tips."
   },
   "common": {
     "siteName": "Damnoen Saduak Floating Market",
@@ -62,14 +62,14 @@
     "label": "— 02 · About the Market —",
     "heading": "About Damnoen Saduak Floating Market",
     "lead": "Thailand's most iconic and historic floating market, set along the Damnoen Saduak Canal in Ratchaburi Province",
-    "paragraph1": "Damnoen Saduak Floating Market was established in the reign of King Rama IV to connect the waterway between Bangkok and southern Thailand. The Damnoen Saduak Canal, over 32 km long, became a historic trade route where villagers have exchanged goods since ancient times.",
+    "paragraph1": "The Damnoen Saduak Canal was commissioned in the reign of King Rama IV to shorten the waterway between Bangkok and southern Thailand. Stretching over 32 km, it became a historic trade route, and the floating market grew along its banks over the following decades as villagers paddled out to trade their orchard produce.",
     "paragraph2": "Every early morning, brightly painted paddle boats line up selling pomelo, bananas, young coconut and home-cooked food, letting visitors experience the authentic riverside life of old Siam that still survives today.",
     "quote": "A floating market is not just a place to trade — it is a way of life that floats upon the water",
     "quoteAuthor": "— Aunt Chuen, third-generation boat vendor",
     "stats": [
       { "value": "32 km", "label": "Length of Damnoen Saduak Canal" },
-      { "value": "200+ yrs", "label": "Age of this riverside market" },
-      { "value": "07:00–17:00", "label": "Opening hours" }
+      { "value": "160+ yrs", "label": "Age of this riverside market" },
+      { "value": "07:00–17:00", "label": "Market grounds open (liveliest before 11:00)" }
     ],
     "highlights": [
       { "tag": "01", "title": "Paddle boats", "desc": "Wooden canoes and long-tail boats brimming with colourful goods" },
@@ -115,15 +115,16 @@
     "lead": "Everything you need to know before you set off, so your visit is smooth and worthwhile",
     "scamTip": {
       "tag": "⚠️ Avoid scams (official pier guide)",
-      "text": "Decline the inflated prices at private roadside piers (Passerby Piers). Navigate directly to 'Damnoen Saduak Floating Market Main Pier' (inside the core market). The official paddle-boat reference price is 150–300 THB per person per hour; hand-rowed boats or fairly priced long-tail boats are more transparent."
+      "text": "Decline the inflated prices at private roadside piers (Passerby Piers). Navigate directly to 'Damnoen Saduak Floating Market Main Pier' (inside the core market). A typical paddle-boat rate is 150–300 THB per boat per hour; hand-rowed boats or fairly priced long-tail boats are more transparent. Always agree the fare and route before boarding."
     },
     "hours": {
       "tag": "01",
       "title": "Opening hours",
-      "time": "Daily 07:00 – 17:00",
+      "time": "Daily from around 07:00",
       "items": [
-        { "label": "Most lively period", "value": "07:00 – 09:00" },
-        { "label": "Boat rentals", "value": "08:00 – 16:00" }
+        { "label": "Liveliest trading (boats & stalls)", "value": "07:00 – 11:00" },
+        { "label": "Boat rentals", "value": "08:00 – 16:00" },
+        { "label": "Land-side stalls & shops", "value": "until ~17:00" }
       ]
     },
     "fees": {
@@ -236,26 +237,13 @@
     ]
   },
   "reviews": {
-    "label": "— 07 · Visitor Reviews —",
-    "heading": "Voices of Our Visitors",
-    "intro": "A collection of opinions from travellers around the world who visited Damnoen Saduak Floating Market",
-    "declaration": "All reviews are genuine user opinions with no sponsorship",
-    "featured": [
-      { "text": "Going at dawn like a local is the best thing to do — the brightly coloured boats and familiar vendor calls are unforgettable", "source": "— TripAdvisor" },
-      { "text": "A cultural experience you can't get in big cities, perfect for photos and learning a way of life", "source": "— Google Reviews" }
-    ],
-    "items": [
-      { "name": "Somchai T.", "date": "Mar 2026", "rating": "4.5", "text": "The most lively floating market I've been to; the boat food is amazing, especially the boat noodles." },
-      { "name": "Anna K.", "date": "Feb 2026", "rating": "4.0", "text": "Lovely atmosphere, but very crowded on holidays — go early." },
-      { "name": "Wichai P.", "date": "Jan 2026", "rating": "5.0", "text": "I come every year and never get bored; a riverside life you can rarely repeat." },
-      { "name": "Liu Mei", "date": "Dec 2025", "rating": "3.5", "text": "Very beautiful, though a bit pricier than ordinary markets." },
-      { "name": "John D.", "date": "Nov 2025", "rating": "4.0", "text": "Great cultural experience, boat noodles were excellent." },
-      { "name": "Pimchanok S.", "date": "Oct 2025", "rating": "4.5", "text": "The long-tail boat tour is worth it; you see the orchard growers' way of life." },
-      { "name": "Tanaka H.", "date": "Sep 2025", "rating": "3.0", "text": "Crowded and fairly tourist-zoned, but still worth the trip." },
-      { "name": "Niran R.", "date": "Aug 2025", "rating": "4.0", "text": "The pomelo is absolutely delicious; I buy some to take home every time." }
-    ],
-    "viewLocation": "View location on Google Maps ↗",
-    "disclaimer": "Overall rating 3.8 from 34,885 reviewers on Google Maps"
+    "label": "— 07 · Visitor Rating —",
+    "heading": "Visitor Rating",
+    "intro": "Damnoen Saduak Floating Market is one of Thailand's most visited attractions. The score below reflects its public Google Maps rating, compiled from visitor reviews on that platform.",
+    "ratingLabel": "Overall rating",
+    "sourceLabel": "Based on Google Maps reviews",
+    "note": "This site is an independent guide and does not publish individual visitor reviews. The score above is the venue's public Google Maps rating.",
+    "viewLocation": "View on Google Maps ↗"
   },
   "mapSection": {
     "label": "— 08 · Location & Getting There —",
@@ -852,5 +840,118 @@
     "verifyNote": "Opening hours, fees and routes can change. Please confirm with the service provider or local authority before setting out.",
     "photoCredit": "All photographs on this website remain the property of their original photographers and are used under the licences stated.",
     "editorial": "This site is produced by an independent, non-commercial editorial team. It is not affiliated with any government body or commercial operator."
+  },
+  "topics": {
+    "openingHours": {
+      "title": "Opening Hours & Best Time to Visit",
+      "metaTitle": "Damnoen Saduak Opening Hours & Best Time to Visit (2026)",
+      "metaDescription": "When is Damnoen Saduak Floating Market open? Market trading peaks 07:00–11:00, boat rentals 08:00–16:00. Find the quietest, coolest time to visit.",
+      "label": "— Guide · Opening Hours —",
+      "intro": "Damnoen Saduak is active every day of the year, but different parts of the market keep very different hours. Plan around the morning trade for the most authentic experience.",
+      "sections": [
+        { "h": "Daily rhythm of the market", "body": "The water market itself wakes up before dawn. Boat vendors and canal-side stalls are at their busiest between 07:00 and 11:00, when the light is soft and the heat is still low. By early afternoon most boats have returned to shore and the scene is much quieter.", "list": ["07:00–11:00 — liveliest trading (boats & stalls)", "08:00–16:00 — boat rentals available", "until ~17:00 — land-side stalls & shops"] },
+        { "h": "Boat tours vs. the free market", "body": "You do not need to join a boat tour to enjoy the market. The public piers and walkways are open to everyone. Long-tail and paddle boats for hire run roughly 08:00–16:00; operators wind down in the late afternoon." },
+        { "h": "Best day and time to visit", "body": "Weekdays are noticeably calmer than weekends and Thai public holidays. Arriving around 07:30–08:00 lets you see the morning trade and still beat the worst of the midday heat. The cool season (November–February) is the most comfortable." },
+        { "h": "Seasonal notes", "body": "The market runs year-round, but the canal and orchard scenery are greenest just after the rainy season (September–November). Heavy rain can occasionally affect early-morning boat trips, so check the forecast before a long drive." }
+      ],
+      "faqs": [
+        { "q": "Is Damnoen Saduak open every day?", "a": "Yes. The market trades every day of the year, including public holidays. Trading is busiest in the morning (roughly 07:00–11:00)." },
+        { "q": "What time should I arrive?", "a": "Aim for 07:30–08:00. You'll catch the morning boat trade at its peak and avoid the midday heat and largest crowds." },
+        { "q": "Do boats run all day?", "a": "Boat rentals normally operate 08:00–16:00. The land-side market stays open later, but the floating trade itself is a morning affair." },
+        { "q": "Which months are best?", "a": "November to February is coolest and most pleasant. September–November, just after the rains, the orchards and canal are at their greenest." },
+        { "q": "Is it worth going on a weekend?", "a": "It's worth it, but weekends and holidays are busier and hotter in the crowds. If you prefer calm, choose a weekday." }
+      ],
+      "relatedTitle": "More guides"
+    },
+    "boatPrices": {
+      "title": "Boat Prices & Tours",
+      "metaTitle": "Damnoen Saduak Boat Prices & Tours (2026)",
+      "metaDescription": "How much is a boat at Damnoen Saduak? Typical paddle-boat rates are 150–300 THB per boat per hour; long-tail tours run higher. Compare options before you go.",
+      "label": "— Guide · Boat Prices —",
+      "intro": "Boats are the signature way to see Damnoen Saduak. Prices are not fixed by an official meter, so knowing the usual ranges helps you choose the right trip and avoid surprises.",
+      "sections": [
+        { "h": "Types of boats", "body": "Two kinds dominate the canal.", "list": ["Hand-rowed paddle boats — slow, quiet, seat 2–4, ideal for photos and close-up stalls. Typically 150–300 THB per boat per hour.", "Long-tail boats — engine-powered, faster, can carry a small group and cover more canal. Priced per trip or per hour, usually higher than paddle boats."] },
+        { "h": "Typical price ranges (indicative)", "body": "These are common on-the-spot rates, not official tariffs. Always confirm the total, the duration, and the route before boarding.", "list": ["Paddle boat: ~150–300 THB per boat per hour", "Long-tail joiner tour: from ~100 THB per person for a short loop, more for private hire", "Private long-tail (1–2 hours, small group): varies by negotiation"] },
+        { "h": "What's usually included", "body": "A basic hire covers the boat and rower for the agreed time. Food, drinks, and entry to any side attractions are separate. Some long-tail tours add a temple or orchard stop — confirm what is included." },
+        { "h": "Where to board", "body": "Use the main market piers inside the core area. Avoid roadside 'passerby piers' that quote inflated prices to through-traffic. The official main pier is clearly signed within the market." }
+      ],
+      "faqs": [
+        { "q": "How much is a paddle boat per hour?", "a": "A typical hand-rowed paddle boat costs about 150–300 THB per boat per hour, seating 2–4 people. Agree the price and time before you board." },
+        { "q": "Is the price per person or per boat?", "a": "For paddle boats it is per boat (not per person). Long-tail joiner tours may be priced per person. Always clarify which applies." },
+        { "q": "Are boat prices fixed?", "a": "No. There is no official metered fare. Rates are negotiated on the spot, so compare a couple of operators and confirm the total upfront." },
+        { "q": "Can I see the market without a boat?", "a": "Yes. The canal-side walkways and stalls are free to explore on foot. A boat adds the classic floating-market perspective but is optional." },
+        { "q": "Should I book in advance?", "a": "For independent travel you can hire on arrival. If you want a private long-tail with a set itinerary, booking ahead through a reputable operator can lock the price." }
+      ],
+      "relatedTitle": "More guides"
+    },
+    "fromBangkok": {
+      "title": "Getting There from Bangkok",
+      "metaTitle": "How to Get to Damnoen Saduak from Bangkok (2026)",
+      "metaDescription": "Damnoen Saduak is in Ratchaburi, about 100 km from Bangkok. Drive ~1.5–2h, join a tour, or take a bus/minivan to Ratchaburi and a taxi the last leg.",
+      "label": "— Guide · From Bangkok —",
+      "intro": "Damnoen Saduak sits in Damnoen Saduak District, Ratchaburi Province — not in Bangkok itself, but an easy day trip. Plan roughly 1.5–2 hours each way by road.",
+      "sections": [
+        { "h": "By car or taxi", "body": "The direct route follows Route 4 (Phetkasem) southwest from Bangkok toward Ratchaburi, then local roads to the market. Driving time is about 1.5–2 hours depending on traffic. Ride-hailing or a private taxi from Bangkok is the most flexible option." },
+        { "h": "By public bus / minivan", "body": "Frequent minivans and buses run from Bangkok to Ratchaburi town. From Ratchaburi bus station, a local songthaew or taxi covers the remaining ~30–40 minutes to the market. This is the cheapest independent option." },
+        { "h": "On a guided tour", "body": "Many Bangkok-based day tours include hotel pickup, the boat ride, and sometimes a stop at Maeklong Railway Market. Convenient, but compare what is included and read recent reviews." },
+        { "h": "Why it is NOT a Bangkok market", "body": "Visitors often search 'floating market Bangkok'. Damnoen Saduak is in Ratchaburi Province, roughly 100 km southwest of the city. It is reached from Bangkok as a day trip, not a neighbourhood market." },
+        { "h": "Practical tips", "body": "", "list": ["Leave Bangkok by 06:30–07:00 to arrive for the morning trade.", "Carry small cash for boats, food, and stalls.", "Confirm the return arrangement if you travel independently."] }
+      ],
+      "faqs": [
+        { "q": "How far is Damnoen Saduak from Bangkok?", "a": "About 100 km southwest, in Ratchaburi Province. Driving time is roughly 1.5–2 hours depending on traffic." },
+        { "q": "Can I use public transport?", "a": "Yes. Minivans/buses run Bangkok–Ratchaburi; from there a local taxi or songthaew reaches the market in about 30–40 minutes." },
+        { "q": "Is it a Bangkok floating market?", "a": "No. It is in Ratchaburi, but it is the most famous floating market reachable as a day trip from Bangkok." },
+        { "q": "What time should I leave Bangkok?", "a": "Around 06:30–07:00 gets you there for the peak morning trade and back before the worst traffic." },
+        { "q": "Is a tour or self-travel better?", "a": "Tours are convenient and include transport and boats; self-travel is cheaper and more flexible. Choose based on your budget and time." }
+      ],
+      "relatedTitle": "More guides"
+    },
+    "avoidScams": {
+      "title": "Avoiding Scams & Overpricing",
+      "metaTitle": "Damnoen Saduak Scams & Overpricing: How to Avoid Them",
+      "metaDescription": "Practical tips to avoid inflated boat prices and roadside 'passerby piers' at Damnoen Saduak. Board at the main market pier and agree the fare first.",
+      "label": "— Guide · Avoid Scams —",
+      "intro": "The market is safe and welcoming, but like any major attraction it has a few pressure points. A little preparation keeps your visit smooth and fairly priced.",
+      "sections": [
+        { "h": "The 'passerby pier' trap", "body": "Private roadside piers along the approach road (often called 'Passerby Piers') quote much higher boat prices to through-traffic. Drive or walk past them to the clearly signed main market pier inside the core area.", "list": ["Symptom: a tuk-tuk or driver insists you must board 'here'.", "Fix: continue to 'Damnoen Saduak Floating Market Main Pier' in the market itself."] },
+        { "h": "Agree the fare before boarding", "body": "Boat prices are negotiable and not metered. Confirm the total price, the duration, and the route (which canals/stops) before you step in. A typical paddle boat is 150–300 THB per boat per hour — if quoted far above that for a short loop, keep comparing." },
+        { "h": "Know per boat vs per person", "body": "Paddle boats are priced per boat (2–4 seats), not per person. Long-tail joiner tours may be per person. Mixing up the two is a common source of surprise charges." },
+        { "h": "Food, photos & extras", "body": "Samples and small items are part of the fun, but clarify any 'photo with animal' or extra-stop charges first. Keep small cash and a rough mental budget." },
+        { "h": "Be wary of 'official' claims", "body": "No single body sets a fixed, published boat tariff. Treat any 'official price' sign as a reference only, and compare a couple of operators." }
+      ],
+      "faqs": [
+        { "q": "Are there really scams at Damnoen Saduak?", "a": "Not dangerous, but overpricing exists — mainly at roadside piers and via unclear boat quotes. Awareness is enough to avoid them." },
+        { "q": "Which pier should I use?", "a": "The main market pier inside the core area (signed 'Damnoen Saduak Floating Market Main Pier'). Avoid roadside 'passerby piers'." },
+        { "q": "What is a fair paddle-boat price?", "a": "Around 150–300 THB per boat per hour is typical. Much more for a short loop is a sign to compare elsewhere." },
+        { "q": "Do I need to haggle a lot?", "a": "Lightly. Agree total price, time, and route upfront; that prevents most disputes." },
+        { "q": "Is the market safe for solo travellers?", "a": "Yes. It is a busy, tourist-friendly place. Standard travel caution with cash and belongings is enough." }
+      ],
+      "relatedTitle": "More guides"
+    },
+    "maeklongDayTrip": {
+      "title": "Damnoen Saduak + Maeklong Day Trip",
+      "metaTitle": "Damnoen Saduak + Maeklong Railway Market Day Trip",
+      "metaDescription": "Combine Damnoen Saduak Floating Market with Maeklong Railway Market (the 'umbrella market' where trains pass through stalls) for a classic Ratchaburi–Samut Songkhram day trip.",
+      "label": "— Guide · Day Trip —",
+      "intro": "Two of Thailand's most photogenic markets sit within reach of each other. Pairing the morning floating market with the train-through-market spectacle at Maeklong makes a memorable one-day loop.",
+      "sections": [
+        { "h": "The two markets", "body": "Damnoen Saduak (Ratchaburi) is the floating market. Maeklong Railway Market, in Samut Songkhram province to the south, is famous for stalls set on active railway tracks — vendors pull back awnings minutes before a train rolls through.", "list": ["Damnoen Saduak — best in the morning (07:00–11:00).", "Maeklong — timed around the train schedule (several passes per day)."] },
+        { "h": "Suggested routing", "body": "Start at Damnoen Saduak early (arrive ~08:00), enjoy the boats and stalls, then drive south to Maeklong for a late-morning or midday train. Check the current train times before you go, as the schedule shifts.", "list": ["Bangkok → Damnoen Saduak (1.5–2h)", "Damnoen Saduak → Maeklong (~1–1.5h south)", "Maeklong → Bangkok (via Samut Songkhram, ~1.5h)"] },
+        { "h": "By tour vs self-drive", "body": "Many Bangkok day tours bundle both markets with transport and a boat ride. Self-driving gives flexibility to time the Maeklong train; just pre-check the schedule." },
+        { "h": "Tips for the combo", "body": "", "list": ["Confirm Maeklong train times the day before.", "Keep cash for both markets.", "Wear light clothing and sun protection for the open tracks."] }
+      ],
+      "faqs": [
+        { "q": "Can I visit both in one day?", "a": "Yes. Start at Damnoen Saduak in the morning, then drive south to Maeklong for a midday train — a classic day loop." },
+        { "q": "How far is Maeklong from Damnoen Saduak?", "a": "About 1–1.5 hours south by road, in Samut Songkhram Province." },
+        { "q": "When do trains pass through Maeklong market?", "a": "Several times daily, but times change. Check the current schedule before you travel so you don't miss the spectacle." },
+        { "q": "Is a guided combo tour worth it?", "a": "It is convenient if you want transport and timing handled. Self-driving is more flexible for catching the train." },
+        { "q": "What should I bring?", "a": "Small cash, sun protection, and a camera. Both markets are photogenic and best enjoyed on foot." }
+      ],
+      "relatedTitle": "More guides"
+    }
+  },
+  "topicGuides": {
+    "title": "Plan your visit: deep-dive guides",
+    "subtitle": "Practical answers on hours, boats, transport, scams and a Maeklong combo trip."
   }
 }
