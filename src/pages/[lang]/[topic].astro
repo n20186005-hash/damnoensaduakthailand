@@ -4,15 +4,14 @@ import TopicPage from '../../components/TopicPage.astro';
 
 export const prerender = true;
 
-const TOPICS = [
-  { slug: 'opening-hours', key: 'openingHours' },
-  { slug: 'boat-prices', key: 'boatPrices' },
-  { slug: 'from-bangkok', key: 'fromBangkok' },
-  { slug: 'avoid-scams', key: 'avoidScams' },
-  { slug: 'maeklong-day-trip', key: 'maeklongDayTrip' },
-];
-
 export function getStaticPaths() {
+  const TOPICS = [
+    { slug: 'opening-hours', key: 'openingHours' },
+    { slug: 'boat-prices', key: 'boatPrices' },
+    { slug: 'from-bangkok', key: 'fromBangkok' },
+    { slug: 'avoid-scams', key: 'avoidScams' },
+    { slug: 'maeklong-day-trip', key: 'maeklongDayTrip' },
+  ];
   return languagesList
     .map((lang) =>
       TOPICS.map((tp) => ({
